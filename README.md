@@ -917,7 +917,7 @@ This coding standard targets self-documenting code, and therefore favors readabi
     redColor100 = darken( redColor, 80% );
     ```
 
-*   SCSS constants in **kebab-case**.
+*   Declare SCSS constants in **kebab-case**.
 
     ```css
     $red-color: #F87272;
