@@ -355,8 +355,6 @@ This coding standard targets self-documenting code, and therefore favors readabi
         tankIndex;
     ```
 
-*   Try to declare all local variables at the start of the method, to improve the algorithm readability.
-
 *   Group local variables of the same type, and sort the declarations by ascending types (lowercase, then PascalCase, then SCREAMING_CASE) and variable names, so that the declaration of a variable can be located at a glance.
 
     ```cs
