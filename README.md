@@ -357,7 +357,7 @@ This coding standard targets self-documenting code, and therefore favors readabi
 
 *   Try to declare all local variables at the start of the method, to improve the algorithm readability.
 
-*   Group local variables of the same type, and sort the declarations by ascending types (lowercase, then PascalCase, then UPPER_CASE) and variable names, so that the declaration of a variable can be located at a glance.
+*   Group local variables of the same type, and sort the declarations by ascending types (lowercase, then PascalCase, then SCREAMING_CASE) and variable names, so that the declaration of a variable can be located at a glance.
 
     ```cs
     int
@@ -906,11 +906,17 @@ This coding standard targets self-documenting code, and therefore favors readabi
         *   animation-play-state
     *   Media queries (of increasing breakpoint size)
 
-*   Declare Stylus constants in **PascalCase**.
+*   Write color literals in **UPPERCASE**.
 
     ```css
-    RedColor = #F87272;
-    RedColor100 = darken( RedColor, 80% );
+    background-color: #C8C8C8;
+    ```
+
+*   Declare Stylus constants in **camelCase**.
+
+    ```css
+    redColor = #F87272;
+    redColor100 = darken( redColor, 80% );
     ```
 
 *   SCSS constants in **kebab-case**.
