@@ -843,6 +843,15 @@ This coding standard targets self-documenting code, and therefore favors readabi
         *   background-repeat
         *   background-size
         *   background-attachment
+        *   mask
+        *   mask-clip
+        *   mask-composite
+        *   mask-image
+        *   mask-mode
+        *   mask-origin
+        *   mask-position
+        *   mask-repeat
+        *   mask-size
         *   box-shadow
         *   filter
         *   backdrop-filter
@@ -948,6 +957,243 @@ This coding standard targets self-documenting code, and therefore favors readabi
         ...
     </div>
     ```
+
+## Svelte rules
+
+*   Write Svelte components in this order :
+    *   script section
+    *   HTML section
+    *   style section
+
+```
+<script>
+    // -- TYPES
+
+    class Person
+    {
+        // -- CONSTRUCTORS
+
+        constructor(
+            name,
+            age,
+            weight
+            )
+        {
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+        }
+
+        // -- INQUIRIES
+
+        getAge(
+            )
+        {
+            return age;
+        }
+
+        // ~~
+
+        getHelloMessage(
+            )
+        {
+            return `Hello, my name is ${ this.name }, I'm ${ this.age } years old and I weight ${ this.weight } kilograms.`;
+        }
+
+        // -- OPERATIONS
+
+        setAge(
+            age
+            )
+        {
+            this.age = age;
+        }
+    }
+
+    // -- FUNCTIONS
+
+    function getFruitText(
+        fruitArray
+        )
+    {
+        let fruitText = '';
+
+        for ( let fruitName of fruitNameArray )
+        {
+            if ( fruitText !== '' )
+            {
+                fruitText += ', ';
+            }
+
+            fruitText += fruitName;
+        }
+
+        return fruitText;
+    }
+
+    // ~~
+
+    function getAgeInterval(
+        sortedPersonArray
+        )
+    {
+        if ( sortedPersonArray.length === 0 )
+        {
+            return null;
+        }
+        else
+        {
+            return (
+                {
+                    firstAge: sortedPersonArray[ 0 ].age,
+                    lastAge: sortedPersonArray[ sortedPersonArray.length - 1 ].age
+                }
+                );
+        }
+    }
+
+    // -- STATEMENTS
+
+    let fruitNameArray =
+        [
+            'apple',
+            'banana',
+            'cherry'
+        ];
+
+    let book =
+        {
+            title: 'SvelteKit for Beginners',
+            author: 'John Doe',
+            year: 2023
+        };
+
+    let numberArray = [ 1, 2, 3, 4, 5 ];
+    let doubledNumberArray = numberArray.map( n => n * 2 );
+
+    let bookText = '';
+    let messageCount = 5;
+
+    for ( let messageIndex = 0;
+          messageIndex < messageCount;
+          ++messageIndex )
+    {
+        bookText += messageIndex + ': ' + book.title + '<br/>';
+
+        if ( book.year >= 2022 )
+        {
+            bookText += 'The book is recent!<br/>';
+        }
+    }
+
+    let passIndex = 0;
+
+    while ( passIndex < 5 )
+    {
+        ++passIndex;
+    }
+
+    let fruitText = getFruitText( fruitNameArray );
+
+    let personArray =
+        [
+            new Person( 'Mike', 49, 85 ),
+            new Person( 'Luke', 30, 77 ),
+            new Person( 'John', 30, 72 )
+        ];
+
+    personArray.sort(
+        ( firstPerson, secondPerson ) =>
+        {
+            if ( firstPerson.age !== secondPerson.age )
+            {
+                return firstPerson.age - secondPerson.age;
+            }
+            else
+            {
+                return firstPerson.weight - secondPerson.weight;
+            }
+        }
+        );
+
+    let ageInterval = getAgeInterval( personArray );
+</script>
+
+<svelte:head>
+    <title>SvelteKit Sample</title>
+</svelte:head>
+
+<main>
+    <h1>
+        { book.title }
+    </h1>
+    <p class="author">
+        Author: { book.author }
+    </p>
+    <p class="book-text">
+        {@html bookText }
+    </p>
+    { #each numberArray as number }
+        <p class="number">
+            Number : { number }
+        </p>
+    { /each }
+    <p>
+        Doubled numbers: { doubledNumberArray.join( ', ' ) }
+    </p>
+    <p id="fruit-list" class="fruit-list">
+        Fruits: { fruitText }
+    </p>
+    { #each personArray as person }
+        <p class="person">
+            { person.getHelloMessage() }
+        </p>
+    { /each }
+    <p>
+        { ageInterval.firstAge } - { ageInterval.lastAge }
+    </p>
+</main>
+
+<style lang="stylus">
+    // -- ELEMENTS
+
+    h1
+    {
+        font-size: 2rem;
+        color: #34628B;
+    }
+
+    h1:hover
+    {
+        font-size: 2.5rem;
+    }
+
+    p
+    {
+        color: #B24871;
+    }
+
+    // -- CLASSES
+
+    .author
+    {
+        color: #A80BC9;
+    }
+
+    .book-text,
+    .fruit-list
+    {
+        color: #2C28B8;
+    }
+
+    .person
+    {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2929BD;
+    }
+</style>
+```
 
 ## Version
 
