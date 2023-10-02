@@ -1119,41 +1119,6 @@ This coding standard targets self-documenting code, and therefore favors readabi
     let ageInterval = getAgeInterval( personArray );
 </script>
 
-<svelte:head>
-    <title>SvelteKit Sample</title>
-</svelte:head>
-
-<main>
-    <h1>
-        { book.title }
-    </h1>
-    <p class="author">
-        Author: { book.author }
-    </p>
-    <p class="book-text">
-        {@html bookText }
-    </p>
-    { #each numberArray as number }
-        <p class="number">
-            Number : { number }
-        </p>
-    { /each }
-    <p>
-        Doubled numbers: { doubledNumberArray.join( ', ' ) }
-    </p>
-    <p id="fruit-list" class="fruit-list">
-        Fruits: { fruitText }
-    </p>
-    { #each personArray as person }
-        <p class="person">
-            { person.getHelloMessage() }
-        </p>
-    { /each }
-    <p>
-        { ageInterval.firstAge } - { ageInterval.lastAge }
-    </p>
-</main>
-
 <style lang="stylus">
     // -- ELEMENTS
 
@@ -1193,6 +1158,41 @@ This coding standard targets self-documenting code, and therefore favors readabi
         color: #2929BD;
     }
 </style>
+
+<svelte:head>
+    <title>SvelteKit Sample</title>
+</svelte:head>
+
+<main>
+    <h1>
+        { book.title }
+    </h1>
+    <p class="author">
+        Author: { book.author }
+    </p>
+    <p class="book-text">
+        {@html bookText }
+    </p>
+    { #each numberArray as number }
+        <p class="number">
+            Number : { number }
+        </p>
+    { /each }
+    <p>
+        Doubled numbers: { doubledNumberArray.join( ', ' ) }
+    </p>
+    <p id="fruit-list" class="fruit-list">
+        Fruits: { fruitText }
+    </p>
+    { #each personArray as person }
+        <p class="person">
+            { person.getHelloMessage() }
+        </p>
+    { /each }
+    <p>
+        { ageInterval.firstAge } - { ageInterval.lastAge }
+    </p>
+</main>
 ```
 
 ## Version
