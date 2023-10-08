@@ -18,12 +18,12 @@ Efficiently develop code and applications with the following qualities :
 
 ## Specificity
 
-This coding standard targets self-documenting code, and therefore favors readability over compactness by :
+This coding standard targets self-documenting code, and favors readability over compactness by :
 
 *   forbidding the use of cryptic acronyms, abbreviations, prefixes and suffixes;
 *   including the class name in attributes and variable names.
 
-## General rules
+## Principles
 
 *   **Design before you code** by quickly writing :
 
@@ -77,6 +77,275 @@ This coding standard targets self-documenting code, and therefore favors readabi
 
 *   Use the concise functions provided by the project high level libraries instead of calling directly the low level functions they wrap.
 
+## Base rules
+
+*   Write readable self-documenting code which makes the indent of each statement fully obvious without any context or comment
+*   Use clear non-ambiguous names for types, functions and variables
+*   Write short functions
+*   Use Unix line endings
+*   Use four spaces per indentation level and no tabulations
+*   Put braces on their own line and align them vertically
+*   Put multiline JavaScript return arguments in parentheses
+*   Indent the content of braces, brackets and parentheses by four spaces
+*   Indent closing brackets and parentheses by four spaces
+*   Add exactly a space after { [ ( if while for
+*   Add exactly a space before } ] )
+*   No space between {} [] ()
+*   Add an empty line before if while for return
+*   Add an empty line after =>
+*   No empty line after { [ ( and before } ] )
+*   No consecutive empty lines
+*   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
+*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes)
+*   Use the class name in the variable names : addedProductId
+*   Use standard prefixes : first, last, post, prior, next, new, old, initial, final, minimum, maximum
+*   Use standard suffixes : Index, Count, Array, List, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
+*   Write all type identifiers in PascalCase : Product, ProductImage
+*   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap
+*   Write each function parameter on its own line
+*   Don't add an ending comma to array literals
+*   Declare standard functions and methods
+*   Use arrow functions sparingly and only as call arguments
+*   Use single quotes in JavaScript and Dart
+*   Use double quotes in HTML
+*   Use pre-incrementations and pre-decrementations
+*   Use strict equality operators in JavaScript
+*   Use script/style/HTML ordering in Svelte components
+
+## Sample code
+
+```
+<script>
+    // -- TYPES
+
+    class Person
+    {
+        // -- CONSTRUCTORS
+
+        constructor(
+            name,
+            age,
+            weight
+            )
+        {
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+        }
+
+        // -- INQUIRIES
+
+        getAge(
+            )
+        {
+            return age;
+        }
+
+        // ~~
+
+        getHelloMessage(
+            )
+        {
+            return `Hello, my name is ${ this.name }, I'm ${ this.age } years old and I weight ${ this.weight } kilograms.`;
+        }
+
+        // -- OPERATIONS
+
+        setAge(
+            age
+            )
+        {
+            this.age = age;
+        }
+    }
+
+    // -- FUNCTIONS
+
+    function getFruitText(
+        fruitArray
+        )
+    {
+        let fruitText = '';
+
+        for ( let fruitName of fruitNameArray )
+        {
+            if ( fruitText !== '' )
+            {
+                fruitText += ', ';
+            }
+
+            fruitText += fruitName;
+        }
+
+        return fruitText;
+    }
+
+    // ~~
+
+    function getAgeInterval(
+        sortedPersonArray
+        )
+    {
+        if ( sortedPersonArray.length === 0 )
+        {
+            return null;
+        }
+        else
+        {
+            return (
+                {
+                    firstAge: sortedPersonArray[ 0 ].age,
+                    lastAge: sortedPersonArray[ sortedPersonArray.length - 1 ].age
+                }
+                );
+        }
+    }
+
+    // -- STATEMENTS
+
+    let fruitNameArray =
+        [
+            'apple',
+            'banana',
+            'cherry'
+        ];
+
+    let book =
+        {
+            title: 'SvelteKit for Beginners',
+            author: 'John Doe',
+            year: 2023
+        };
+
+    let numberArray = [ 1, 2, 3, 4, 5 ];
+    let doubledNumberArray = numberArray.map( n => n * 2 );
+
+    let bookText = '';
+    let messageCount = 5;
+
+    for ( let messageIndex = 0;
+          messageIndex < messageCount;
+          ++messageIndex )
+    {
+        bookText += messageIndex + ': ' + book.title + '<br/>';
+
+        if ( book.year >= 2022 )
+        {
+            bookText += 'The book is recent!<br/>';
+        }
+    }
+
+    let passIndex = 0;
+
+    while ( passIndex < 5 )
+    {
+        ++passIndex;
+    }
+
+    let fruitText = getFruitText( fruitNameArray );
+
+    let personArray =
+        [
+            new Person( 'Mike', 49, 85 ),
+            new Person( 'Luke', 30, 77 ),
+            new Person( 'John', 30, 72 )
+        ];
+
+    personArray.sort(
+        ( firstPerson, secondPerson ) =>
+        {
+            if ( firstPerson.age !== secondPerson.age )
+            {
+                return firstPerson.age - secondPerson.age;
+            }
+            else
+            {
+                return firstPerson.weight - secondPerson.weight;
+            }
+        }
+        );
+
+    let ageInterval = getAgeInterval( personArray );
+</script>
+
+<style lang="stylus">
+    // -- ELEMENTS
+
+    h1
+    {
+        font-size: 2rem;
+        color: #34628B;
+    }
+
+    h1:hover
+    {
+        font-size: 2.5rem;
+    }
+
+    p
+    {
+        color: #B24871;
+    }
+
+    // -- CLASSES
+
+    .author
+    {
+        color: #A80BC9;
+    }
+
+    .book-text,
+    .fruit-list
+    {
+        color: #2C28B8;
+    }
+
+    .person
+    {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2929BD;
+    }
+</style>
+
+<svelte:head>
+    <title>SvelteKit Sample</title>
+</svelte:head>
+
+<main>
+    <h1>
+        { book.title }
+    </h1>
+    <p class="author">
+        Author: { book.author }
+    </p>
+    <p class="book-text">
+        {@html bookText }
+    </p>
+    { #each numberArray as number }
+        <p class="number">
+            Number : { number }
+        </p>
+    { /each }
+    <p>
+        Doubled numbers: { doubledNumberArray.join( ', ' ) }
+    </p>
+    <p id="fruit-list" class="fruit-list">
+        Fruits: { fruitText }
+    </p>
+    { #each personArray as person }
+        <p class="person">
+            { person.getHelloMessage() }
+        </p>
+    { /each }
+    <p>
+        { ageInterval.firstAge } - { ageInterval.lastAge }
+    </p>
+</main>
+```
+
+## Common rules
+
 *   Use **American English** everywhere.
 
     ```cs
@@ -120,8 +389,10 @@ This coding standard targets self-documenting code, and therefore favors readabi
 
 *   Use **standard suffixes** :
 
-    *   index, count
-    *   array, list, map, dictionary
+    *   Index, Count
+    *   Array (in JavaScript), List (in Dart), Map
+    *   Code, Name, Text, Time, Path
+    *   Id, Uuid, Tuid
 
 *   Use **standard verbs** :
 
@@ -960,240 +1231,10 @@ This coding standard targets self-documenting code, and therefore favors readabi
 
 ## Svelte rules
 
-*   Write Svelte components in this order :
+*   Use the following order in Svelte components :
     *   script section
-    *   HTML section
     *   style section
-
-```
-<script>
-    // -- TYPES
-
-    class Person
-    {
-        // -- CONSTRUCTORS
-
-        constructor(
-            name,
-            age,
-            weight
-            )
-        {
-            this.name = name;
-            this.age = age;
-            this.weight = weight;
-        }
-
-        // -- INQUIRIES
-
-        getAge(
-            )
-        {
-            return age;
-        }
-
-        // ~~
-
-        getHelloMessage(
-            )
-        {
-            return `Hello, my name is ${ this.name }, I'm ${ this.age } years old and I weight ${ this.weight } kilograms.`;
-        }
-
-        // -- OPERATIONS
-
-        setAge(
-            age
-            )
-        {
-            this.age = age;
-        }
-    }
-
-    // -- FUNCTIONS
-
-    function getFruitText(
-        fruitArray
-        )
-    {
-        let fruitText = '';
-
-        for ( let fruitName of fruitNameArray )
-        {
-            if ( fruitText !== '' )
-            {
-                fruitText += ', ';
-            }
-
-            fruitText += fruitName;
-        }
-
-        return fruitText;
-    }
-
-    // ~~
-
-    function getAgeInterval(
-        sortedPersonArray
-        )
-    {
-        if ( sortedPersonArray.length === 0 )
-        {
-            return null;
-        }
-        else
-        {
-            return (
-                {
-                    firstAge: sortedPersonArray[ 0 ].age,
-                    lastAge: sortedPersonArray[ sortedPersonArray.length - 1 ].age
-                }
-                );
-        }
-    }
-
-    // -- STATEMENTS
-
-    let fruitNameArray =
-        [
-            'apple',
-            'banana',
-            'cherry'
-        ];
-
-    let book =
-        {
-            title: 'SvelteKit for Beginners',
-            author: 'John Doe',
-            year: 2023
-        };
-
-    let numberArray = [ 1, 2, 3, 4, 5 ];
-    let doubledNumberArray = numberArray.map( n => n * 2 );
-
-    let bookText = '';
-    let messageCount = 5;
-
-    for ( let messageIndex = 0;
-          messageIndex < messageCount;
-          ++messageIndex )
-    {
-        bookText += messageIndex + ': ' + book.title + '<br/>';
-
-        if ( book.year >= 2022 )
-        {
-            bookText += 'The book is recent!<br/>';
-        }
-    }
-
-    let passIndex = 0;
-
-    while ( passIndex < 5 )
-    {
-        ++passIndex;
-    }
-
-    let fruitText = getFruitText( fruitNameArray );
-
-    let personArray =
-        [
-            new Person( 'Mike', 49, 85 ),
-            new Person( 'Luke', 30, 77 ),
-            new Person( 'John', 30, 72 )
-        ];
-
-    personArray.sort(
-        ( firstPerson, secondPerson ) =>
-        {
-            if ( firstPerson.age !== secondPerson.age )
-            {
-                return firstPerson.age - secondPerson.age;
-            }
-            else
-            {
-                return firstPerson.weight - secondPerson.weight;
-            }
-        }
-        );
-
-    let ageInterval = getAgeInterval( personArray );
-</script>
-
-<style lang="stylus">
-    // -- ELEMENTS
-
-    h1
-    {
-        font-size: 2rem;
-        color: #34628B;
-    }
-
-    h1:hover
-    {
-        font-size: 2.5rem;
-    }
-
-    p
-    {
-        color: #B24871;
-    }
-
-    // -- CLASSES
-
-    .author
-    {
-        color: #A80BC9;
-    }
-
-    .book-text,
-    .fruit-list
-    {
-        color: #2C28B8;
-    }
-
-    .person
-    {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #2929BD;
-    }
-</style>
-
-<svelte:head>
-    <title>SvelteKit Sample</title>
-</svelte:head>
-
-<main>
-    <h1>
-        { book.title }
-    </h1>
-    <p class="author">
-        Author: { book.author }
-    </p>
-    <p class="book-text">
-        {@html bookText }
-    </p>
-    { #each numberArray as number }
-        <p class="number">
-            Number : { number }
-        </p>
-    { /each }
-    <p>
-        Doubled numbers: { doubledNumberArray.join( ', ' ) }
-    </p>
-    <p id="fruit-list" class="fruit-list">
-        Fruits: { fruitText }
-    </p>
-    { #each personArray as person }
-        <p class="person">
-            { person.getHelloMessage() }
-        </p>
-    { /each }
-    <p>
-        { ageInterval.firstAge } - { ageInterval.lastAge }
-    </p>
-</main>
-```
+    *   HTML section
 
 ## Version
 
