@@ -92,7 +92,7 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Add exactly a space before } ] )
 *   No space between {} [] ()
 *   Add an empty line before if while for return
-*   Add an empty line after =>
+*   Add an empty line after => (except for short one liners)
 *   No empty line after { [ ( and before } ] )
 *   No consecutive empty lines
 *   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
@@ -118,7 +118,24 @@ This coding standard targets self-documenting code, and favors readability over 
 <script>
     // -- TYPES
 
+    class Being
+    {
+        // -- CONSTRUCTORS
+
+        constructor(
+            name,
+            age
+            )
+        {
+            this.name = name;
+            this.age = age;
+        }
+    }
+
+    // ~~
+
     class Person
+        extends Being
     {
         // -- CONSTRUCTORS
 
@@ -128,8 +145,8 @@ This coding standard targets self-documenting code, and favors readability over 
             weight
             )
         {
-            this.name = name;
-            this.age = age;
+            super( name, age );
+
             this.weight = weight;
         }
 
@@ -156,6 +173,32 @@ This coding standard targets self-documenting code, and favors readability over 
             )
         {
             this.age = age;
+        }
+
+        // ~~
+
+        setFakeAge(
+            age
+            )
+        {
+            if ( age > 0
+                 && age < 50
+                 && ( age < 20
+                      || age > 40 ) )
+            {
+                this.age = age * 2;
+            }
+            else if ( age > 20
+                      && age < 40
+                      && ( age < 25
+                           || age > 35 ) )
+            {
+                this.age = age * 0.5;
+            }
+            else
+            {
+                this.age = age + 10;
+            }
         }
     }
 
@@ -424,10 +467,11 @@ This coding standard targets self-documenting code, and favors readability over 
     *   send, receive
     *   grant, revoke
 
-*   Name your **types** (classes, structures, enumerations, etc) in **PascalCase**, without articles.
+*   Name your **types** (classes, structures, enumerations, etc) in **PascalCase** without articles, and write ancestor class name on a separate line.
 
     ```cs
     class TankShell
+        extends Bullet
     {
         Vector3
             positionVector;
@@ -507,9 +551,9 @@ This coding standard targets self-documenting code, and favors readability over 
 
     ```cs
     Class
-        class;
+        class_;
 
-    class = new Class();
+    class_ = new Class();
     ```
 
 *   Use a noun or noun phrase for classes, constants, attributes and variable names.
