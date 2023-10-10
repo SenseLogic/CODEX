@@ -79,7 +79,8 @@ This coding standard targets self-documenting code, and favors readability over 
 
 ## Base rules
 
-*   Write readable self-documenting code which makes the indent of each statement fully obvious without any context or comment
+*   Write readable self-documenting code
+*   Makes the intent of each statement fully obvious without any context or comment
 *   Use clear non-ambiguous names for types, functions and variables
 *   Write short functions
 *   Use Unix line endings
@@ -92,7 +93,7 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Add exactly a space before } ] )
 *   No space between {} [] ()
 *   Add an empty line before if while for return
-*   Add an empty line after => (except for short one liners)
+*   Split multiline arrow functions after the => operator
 *   No empty line after { [ ( and before } ] )
 *   No consecutive empty lines
 *   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
@@ -106,16 +107,20 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Don't add an ending comma to array literals
 *   Declare standard functions and methods
 *   Use arrow functions sparingly and only as call arguments
-*   Use single quotes in JavaScript and Dart
-*   Use double quotes in HTML
+*   Use single quotes for JavaScript and Dart string literals
+*   Use double quotes for HTML attributes, unless it's an interpolated value
 *   Use pre-incrementations and pre-decrementations
 *   Use strict equality operators in JavaScript
 *   Use script/style/HTML ordering in Svelte components
 
-## Sample code
+## Sample Svelte component
 
 ```
 <script>
+    // -- IMPORTS
+
+    import { fade } from 'svelte/transition';
+
     // -- TYPES
 
     class Being
@@ -362,11 +367,17 @@ This coding standard targets self-documenting code, and favors readability over 
     <p class="author">
         Author: { book.author }
     </p>
+    <div>
+        <input placeholder={ `Named ${ book.title }` } bind:value={ book.title }/>
+    </div>
+    <div>
+        <input placeholder={ `Written by ${ book.author }` } bind:value={ book.author }/>
+    </div>
     <p class="book-text">
         {@html bookText }
     </p>
     { #each numberArray as number }
-        <p class="number">
+        <p class="number" in:fade>
             Number : { number }
         </p>
     { /each }
@@ -387,6 +398,308 @@ This coding standard targets self-documenting code, and favors readability over 
 </main>
 ```
 
+## Sample Dart entity class
+
+```dart
+// -- TYPES
+
+class Property
+{
+    // -- ATTRIBUTES
+
+    final String
+        id;
+    final double
+        number;
+    final String
+        city,
+        country,
+        title,
+        description;
+    final double
+        price;
+    final String
+        imagePath;
+    final List<String>
+        imagePathArray;
+    final Map<String, String>
+        propertyByNameMap;
+
+    // -- CONSTRUCTORS
+
+    Property(
+        {
+            required this.id,
+            required this.number,
+            required this.city,
+            required this.country,
+            required this.title,
+            required this.description,
+            required this.price,
+            required this.imagePath,
+            required this.imagePathArray,
+            required this.propertyByNameMap
+        }
+        );
+
+    // -- OPERATORS
+
+    @override
+    bool operator==(
+        Object other
+        )
+    {
+        if ( identical( this, other ) )
+        {
+            return true;
+        }
+        else
+        {
+            return
+                other is Property
+                && other.id == id;
+        }
+    }
+
+    // -- INQUIRIES
+
+    Property copyWith(
+        {
+            String? id,
+            double? number,
+            String? city,
+            String? country,
+            String? title,
+            String? description,
+            double? price,
+            String? imagePath,
+            List<String>? imagePathArray,
+            Map<String, String>? propertyByNameMap
+        }
+        )
+    {
+        return Property(
+            id: id ?? this.id,
+            number: number ?? this.number,
+            city: city ?? this.city,
+            country: country ?? this.country,
+            title: title ?? this.title,
+            description: description ?? this.description,
+            price: price ?? this.price,
+            imagePath: imagePath ?? this.imagePath,
+            imagePathArray: imagePathArray ?? this.imagePathArray,
+            propertyByNameMap: propertyByNameMap ?? this.propertyByNameMap
+            );
+    }
+
+    // ~~
+
+    factory Property.fromMap(
+        Map<String, dynamic> map
+        )
+    {
+        return Property(
+            id: map[ 'id' ],
+            number: map[ 'number' ],
+            city: map[ 'city' ],
+            country: map[ 'country' ],
+            title: map[ 'title' ],
+            description: map[ 'description' ],
+            price: map[ 'price' ],
+            imagePath: map[ 'imagePath' ],
+            imagePathArray: List<String>.from( map[ 'imagePathArray' ] ),
+            propertyByNameMap: Map<String, String>.from( map[ 'propertyByNameMap' ] )
+            );
+    }
+
+    // ~~
+
+    Map<String, dynamic> toMap(
+        )
+    {
+        return
+            {
+                'id': id,
+                'number': number,
+                'city': city,
+                'country': country,
+                'title': title,
+                'description': description,
+                'price': price,
+                'imagePath': imagePath,
+                'imagePathArray': imagePathArray,
+                'propertyByNameMap': propertyByNameMap
+            };
+    }
+
+    // ~~
+
+    @override
+    String toString(
+        )
+    {
+        return 'Property { id: $id, number: $number, city: $city, country: $country, title: $title, description: $description, price: $price, imagePath: $imagePath, imagePathArray: $imagePathArray, propertyByNameMap: $propertyByNameMap }';
+    }
+
+    // ~~
+
+    @override
+    int get hashCode
+    {
+        return id.hashCode;
+    }
+}
+```
+
+## Sample Flutter component
+
+```dart
+// -- IMPORTS
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:senselogic_gist/senselogic_gist.dart';
+import '../state/view_properties_state.dart';
+import '../storage/storage.dart';
+import '../store/view_properties_store.dart';
+
+// -- TYPES
+
+class ViewPropertiesPageState
+    extends State<ViewPropertiesPage>
+{
+    // -- ATTRIBUTES
+
+    late final ViewPropertiesStore
+        propertyListStore;
+
+    // -- OPERATIONS
+
+    @override
+    void initState(
+        )
+    {
+        super.initState();
+
+        propertyListStore = ViewPropertiesStore();
+        propertyListStore.fetch();
+    }
+
+    // ~~
+
+    @override
+    Widget build(
+        BuildContext context
+        )
+    {
+        return Scaffold(
+            appBar: AppBar(
+                title: const Text( 'Property Details' ),
+                actions: [
+                    IconButton(
+                        icon: const Icon( Icons.home ),
+                        onPressed: ()
+                        {
+                            context.go( '/' );
+                        },
+                        ),
+                    IconButton(
+                        icon: const Icon( Icons.login ),
+                        onPressed: ()
+                        {
+                            context.go( '/signin' );
+                        },
+                        ),
+                    IconButton(
+                        icon: const Icon( Icons.person_add ),
+                        onPressed: ()
+                        {
+                            context.go( '/signup' );
+                        }
+                        )
+                    ]
+                ),
+            body: BlocConsumer<ViewPropertiesStore, ViewPropertiesState>(
+                bloc: propertyListStore,
+                listener:
+                    ( context, state )
+                    {
+                    },
+                builder:
+                    ( context, state )
+                    {
+                        if ( state is ViewPropertiesInitialState )
+                        {
+                            return const Text( 'Initial' );
+                        }
+                        else if ( state is ViewPropertiesLoadingState )
+                        {
+                            return const Center( child: CircularProgressIndicator() );
+                        }
+                        if ( state is ViewPropertiesErrorState )
+                        {
+                            return Center( child: Text( state.error ) );
+                        }
+                        else if ( state is ViewPropertiesLoadedState )
+                        {
+                            return
+                                ListView.builder(
+                                    physics: const ScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: state.propertyList.length,
+                                    itemBuilder:
+                                        ( context, index )
+                                        {
+                                            final
+                                                property = state.propertyList[ index ];
+
+                                            return ListTile(
+                                                title: Text( getLocalizedText( property.title ) ),
+                                                leading: CachedNetworkImage(
+                                                    imageUrl: getStorageImagePath( property.imagePath, 640 ),
+                                                    placeholder: ( context, url ) => const CircularProgressIndicator(),
+                                                    errorWidget: ( context, url, error ) => const Icon( Icons.error )
+                                                    ),
+                                                onTap: () => context.go( '/property/${ property.id }' ),
+                                                );
+                                        }
+                                    );
+                        }
+                        else
+                        {
+                            return const Icon( Icons.error );
+                        }
+                    }
+                )
+            );
+    }
+}
+
+// ~~
+
+class ViewPropertiesPage
+    extends StatefulWidget
+{
+    // -- CONSTRUCTORS
+
+    const ViewPropertiesPage(
+        {
+            super.key
+        }
+        );
+
+    // -- OPERATIONS
+
+    @override
+    ViewPropertiesPageState createState(
+        )
+    {
+        return ViewPropertiesPageState();
+    }
+}
+```
 ## Common rules
 
 *   Use **American English** everywhere.
@@ -467,7 +780,7 @@ This coding standard targets self-documenting code, and favors readability over 
     *   send, receive
     *   grant, revoke
 
-*   Name your **types** (classes, structures, enumerations, etc) in **PascalCase** without articles, and write ancestor class name on a separate line.
+*   Name your **types** (classes, structures, enumerations, etc) in **PascalCase** without articles, and declare the base class on the next line.
 
     ```cs
     class TankShell
