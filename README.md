@@ -290,6 +290,12 @@ This coding standard targets self-documenting code, and favors readability over 
         ++passIndex;
     }
 
+    do
+    {
+        ++passIndex;
+    }
+    while ( passIndex < 10 );
+
     let fruitText = getFruitText( fruitNameArray );
 
     let personArray =
@@ -302,13 +308,20 @@ This coding standard targets self-documenting code, and favors readability over 
     personArray.sort(
         ( firstPerson, secondPerson ) =>
         {
-            if ( firstPerson.age !== secondPerson.age )
+            try
             {
-                return firstPerson.age - secondPerson.age;
+                if ( firstPerson.age !== secondPerson.age )
+                {
+                    return firstPerson.age - secondPerson.age;
+                }
+                else
+                {
+                    return firstPerson.weight - secondPerson.weight;
+                }
             }
-            else
+            catch ( error )
             {
-                return firstPerson.weight - secondPerson.weight;
+                console.error( error.message );
             }
         }
         );
@@ -1047,7 +1060,7 @@ class ViewPropertiesPage
 
     *   after `(` `[` `,`
     *   before `)` `]`
-    *   after `if` `while` `for` `foreach` `return` ...
+    *   after `if` `switch` `while` `for` `foreach` `return` ...
     *   around operators.
 
 *   Add exactly one empty line :
@@ -1055,7 +1068,7 @@ class ViewPropertiesPage
     *   around standard comments;
     *   after the local variable declarations;
     *   after the method preconditions;
-    *   between `if` `while` `for` `foreach` `do` `return` and the prior statement;
+    *   between `if` `switch` `while` `for` `foreach` `do` `try` `return` and the prior statement;
     *   between `}` and the next statement.
 
 *   Use standard file extensions.
@@ -1075,6 +1088,7 @@ class ViewPropertiesPage
     tank_shell.cpp
     tank_shell.hpp
     ```
+
 *   Group the class elements by category, and declare them in this order :
 
     *   Imports.
