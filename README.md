@@ -77,16 +77,16 @@ This coding standard targets self-documenting code, and favors readability over 
 
 *   Use the concise functions provided by the project high level libraries instead of calling directly the low level functions they wrap.
 
-## Base rules
+## Main rules
 
-*   Write readable self-documenting code
-*   Makes the intent of each statement fully obvious without any context or comment
-*   Use clear non-ambiguous names for types, functions and variables
-*   Write short functions
+*   Write simple and efficient self-documenting code, where the intent of each line of code is perfectly obvious without any comment or context
+*   Write short functions and methods which use clear non-ambiguous names for all type, function, variable and constant identifiers
+*   Split your styling code using section comments : imports, constants, elements, classes
+*   Split your imperative code using section comments : imports, constants, variables, types, attributes, constructors, inquiries, operations, functions, statements
 *   Use Unix line endings
 *   Use four spaces per indentation level and no tabulations
 *   Put braces on their own line and align them vertically
-*   Put multiline JavaScript return arguments in parentheses
+*   Put JavaScript multiline return arguments in parentheses
 *   Indent the content of braces, brackets and parentheses by four spaces
 *   Indent closing brackets and parentheses by four spaces
 *   Add exactly a space after { [ ( if while for
@@ -97,21 +97,28 @@ This coding standard targets self-documenting code, and favors readability over 
 *   No empty line after { [ ( and before } ] )
 *   No consecutive empty lines
 *   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
-*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes)
+*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) made of singular words : productCount, productArray
 *   Use the class name in the variable names : addedProductId
-*   Use standard prefixes : first, last, post, prior, next, new, old, initial, final, minimum, maximum
-*   Use standard suffixes : Index, Count, Array, List, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
+*   Use standard variable prefixes : first, last, post, prior, next, new, old, initial, final, minimum, maximum
+*   Use standard variable suffixes : Index, Count, Array, List, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
+*   Use standard function prefixes : set, get, find, is, has, clear, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable
 *   Write all type identifiers in PascalCase : Product, ProductImage
 *   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap
 *   Write each function parameter on its own line
 *   Don't add an ending comma to array literals
-*   Declare standard functions and methods
-*   Use arrow functions sparingly and only as call arguments
-*   Use single quotes for JavaScript and Dart string literals
-*   Use double quotes for HTML attributes, unless it's an interpolated value
-*   Use pre-incrementations and pre-decrementations
-*   Use strict equality operators in JavaScript
+*   Declare standard functions and methods instead of arrow functions
+*   Use arrow functions only as call arguments
+*   Declare HTML attributes in this order : id, class, style, data-, tag-specific, on:
+*   Order classes from low to high level : class="icon green-search-icon product-filter-button"
+*   Don't use quotes for evaluated HTML attributes : placeholder={ ... }
+*   Use double quotes for HTML attributes : id="..." class="..." style="..." data-name="..." src="..." on:click={ ... }
+*   Use single quotes for string literals
+*   Use pre-incrementations and pre-decrementations : ++productIndex
+*   Use strict equality operators : ===, !==
+*   Test variables against a constant instead of using a falsy test : !== undefined, !== null, !== 0, !== ''
 *   Use script/style/HTML ordering in Svelte components
+*   Write null safe code
+*   Use null values only where absolutely required (Dart optional arguments, etc)
 
 ## Sample Svelte component
 
