@@ -79,13 +79,13 @@ This coding standard targets self-documenting code, and favors readability over 
 
 ## Main rules
 
-*   Write simple and efficient self-documenting code, where the intent of each line of code is perfectly obvious without any comment or context
-*   Write short functions and methods which use clear non-ambiguous names for all type, function, variable and constant identifiers
-*   Split your styling code using section comments : imports, constants, elements, classes
-*   Split your imperative code using section comments : imports, constants, variables, types, attributes, constructors, inquiries, operations, functions, statements
-*   Use Unix line endings
-*   Use four spaces per indentation level and no tabulations
-*   Put braces on their own line and align them vertically
+*   Write **simple and efficient self-documenting code**, where the intent of each line of code is perfectly obvious without any comment or context
+*   Write **short** functions and methods which use **clear non-ambiguous** names for all type, function, variable and constant identifiers
+*   Split your styling code using section comments : IMPORTS, CONSTANTS, ELEMENTS, CLASSES
+*   Split your imperative code using section comments : IMPORTS, CONSTANTS, VARIABLES, TYPES, ATTRIBUTES, CONSTRUCTORS, INQUIRIES, OPERATIONS, FUNCTIONS, STATEMENTS
+*   Use **Unix line endings**
+*   Use **four spaces** per indentation level and no tabulations
+*   Put braces on their **own line** and **align** them vertically
 *   Put JavaScript multiline return arguments in parentheses
 *   Indent the content of braces, brackets and parentheses by four spaces
 *   Indent closing brackets and parentheses by four spaces
@@ -102,6 +102,7 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Use standard variable prefixes : first, last, post, prior, next, new, old, initial, final, minimum, maximum
 *   Use standard variable suffixes : Index, Count, Array, List, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
 *   Use standard function prefixes : set, get, find, is, has, clear, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable
+*   Declare most JavaScript local variables with **let**, using **var** only where it is needed
 *   Write all type identifiers in PascalCase : Product, ProductImage
 *   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap
 *   Write each function parameter on its own line
