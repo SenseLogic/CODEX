@@ -129,6 +129,15 @@ This coding standard targets self-documenting code, and favors readability over 
 
     import { fade } from 'svelte/transition';
 
+    // -- VARIABLES
+
+    export let value = undefined;
+    export let valueArray = [ value ];
+    export onChange = () => {};
+
+    let valueCount = valueArray.length;
+    let
+
     // -- TYPES
 
     class Being
@@ -1040,6 +1049,37 @@ class ViewPropertiesPage
     {
         ...
     }
+
+    let shellHitsTower
+        = ( ( tower.getDistance(
+                  towerTarget,
+                  weaponType
+                  )
+              > tower.maximumShootingDistance )
+            || ( tankDistance > maximum distance
+                 && tankHealth > 0.5 ) );
+    ```
+
+*   In multiline assignments, the operator can also be put at the end of the first line, to ease code indentation :
+
+    ```html
+    <div
+        on:handleShot=
+            {
+                ( shot ) =>
+                {
+                    let shellHitsTower =
+                        ( ( tower.getDistance(
+                                towerTarget,
+                                weaponType
+                                )
+                            > tower.maximumShootingDistance )
+                          || ( tankDistance > maximum distance
+                               && tankHealth > 0.5 ) );
+                }
+            }
+    >
+    </div>
     ```
 
 *   Favor indexed iterations over foreach iterations, and foreach iterations over functional iterations.
@@ -1390,6 +1430,7 @@ class ViewPropertiesPage
         *   right
         *   transform
     *   Container
+        *   container-type
         *   overflow
         *   overflow-y
         *   overflow-x
