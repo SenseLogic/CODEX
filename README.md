@@ -1428,7 +1428,11 @@ class ViewPropertiesPage
         *   bottom
         *   left
         *   right
+        *   transform-origin
         *   transform
+        *   scale
+        *   rotate
+        *   translate
     *   Container
         *   container-type
         *   overflow
