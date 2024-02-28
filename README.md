@@ -73,7 +73,8 @@ This coding standard targets self-documenting code, and favors readability over 
 
 *   Create automated **unit tests**.
 
-*   Only push **stable tested code** under source control, first **test your changes** extensively.
+*   Only push **stable tested code** to the ´develop´ branch, and only after **testing your changes** extensively.
+*   Test those changes again and even more thoroughly when merging them into ´release´, and then ´master`, making sure this won't cause any downtime or loss of data.
 
 *   Use the concise functions provided by the project high level libraries instead of calling directly the low level functions they wrap.
 
@@ -120,6 +121,8 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Use script/style/HTML ordering in Svelte components
 *   Write null safe code
 *   Use null values only where absolutely required (Dart optional arguments, etc)
+*   Always use `let` to declare variables, using `const` only for true constants and `var` for hoisted function variables.
+*   Fix all warnings and errors, both during compilation and at runtime.
 
 ## Sample Svelte component
 
