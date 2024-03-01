@@ -56,7 +56,7 @@ This coding standard targets self-documenting code, and favors readability over 
 
 *   Even if you are on a hurry :
     *   immediately fix any **design or implementation flaw** you see, or else technical debt will accumulate, and thus drastically slow you down in the future.
-    *   continue to develop **clean maintainable code**, which will help you **ship faster** by limiting software entropy, and thus keeping a high level of productivity despite the project size and complexity has grown over time.
+    *   continue to develop **clean maintainable code** to limit sofware entropy, as this will help you **ship faster** by keeping a high level of productivity even if the project size and complexity grow over time.
 
 *   Be a source of **order** instead of chaos, so always leave the code in a better state than you found it.
 
