@@ -12,7 +12,7 @@ Efficiently develop code and applications in a disciplined manner which ensures 
 *   **Efficient** : minimizes processing and waiting times to avoid frustration and maximize productivity.
 *   **Attractive** : allows interaction through a nice looking interface.
 *   **Ergonomic** : can be used in an intuitive and productive manner.
-*   **Robust** : runs without crash even under bad connectivity conditions
+*   **Robust** : runs without crash even under bad connectivity conditions.
 *   **Secure** : protects the data from being lost, corrupted, stolen or hacked.
 *   **Maintainable** : is easy to fix and enhance by any programmer in the team.
 *   **Extensible** : is easy to extend with new features by reusing existing components.
