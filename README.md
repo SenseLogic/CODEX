@@ -6,12 +6,14 @@ Language-agnostic coding standard.
 
 ## Goals
 
-Efficiently develop code and applications with the following qualities :
+Efficiently develop code and applications in a disciplined manner which ensures the following qualities :
 
-*   **Robust** : runs without crash and protects the data from being lost or corrupted.
-*   **Secure** : protects the data from being stolen or hacked.
-*   **Ergonomic** : does exactly what the user needs and can be used in a productive and intuitive manner.
-*   **Efficient** : minimizes processing times to maximize the user productivity.
+*   **Adequate** : perfectly matches the user needs.
+*   **Efficient** : minimizes processing and waiting times to avoid frustration and maximize productivity.
+*   **Attractive** : allows interaction through a nice looking interface.
+*   **Ergonomic** : can be used in an intuitive and productive manner.
+*   **Robust** : runs without crash even under bad connectivity conditions
+*   **Secure** : protects the data from being lost, corrupted, stolen or hacked.
 *   **Maintainable** : is easy to fix and enhance by any programmer in the team.
 *   **Extensible** : is easy to extend with new features by reusing existing components.
 *   **Consistent** : looks like it has been designed and implemented by a single developer.
@@ -42,7 +44,7 @@ This coding standard targets self-documenting code, and favors readability over 
     *   is **stable** and **robust**;
     *   is **easy to understand** just by itself, without comments or surrounding context;
     *   can be easily **extended** and debugged by any programmer in the team;
-    *   **fully** complies with the coding standard, to the point it's impossible to guess who has worked on it.
+    *   minimizes **software entropy**, by maintaining an **orderly structure** over time and **fully** complying with the coding standard.
 
 *   Instead of adding comments to explain the code intent, **refactor the code itself** to make this intent obvious by :
 
@@ -53,7 +55,7 @@ This coding standard targets self-documenting code, and favors readability over 
     *   implement **English-like code** that reads so naturally that even a child could understand what it does.
 
 *   Even if you are on a hurry :
-    *   immediately fix any **design or implementation flaw** you see, or else technical debt will accumulate and slow you down in the future.
+    *   immediately fix any **design or implementation flaw** you see, or else software entropy and technical debt will accumulate, and thus drastically slow you down in the future.
     *   continue to develop **clean maintainable code**, this will actually allow you to **ship faster** by helping you maintain a high level of productivity while the project size grows over time.
 
 *   Be a source of **order** instead of chaos, so always leave the code in a better state than you found it.
