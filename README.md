@@ -101,10 +101,13 @@ This coding standard targets self-documenting code, and favors readability over 
 *   No consecutive empty lines
 *   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
 *   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) made of singular words : productCount, productArray
-*   Use the class name in the variable names : addedProductId
-*   Use standard variable prefixes : first, last, post, prior, next, new, old, initial, final, minimum, maximum
-*   Use standard variable suffixes : Index, Count, Array, List, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
-*   Use standard function prefixes : set, get, find, is, has, clear, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable
+*   Use the singular form in identifiers (messageArray), except for functions (GetMessages) and booleans (HasMessages)
+*   Use the class name in the variable names : addedProductId, productArray
+*   Use the key name in the map names : messageByDateMap
+*   Use standard variable prefixes : first, last, post, prior, next, old, new, initial, final, minimum, maximum
+*   Use standard variable suffixes : Index, Count, Array, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
+*   Use standard path suffixes : FolderPath, FilePath, FileName, FileLabel, FileExtension
+*   Use standard function prefixes : get, find, is, has, clear, set, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable
 *   Declare most JavaScript local variables with **let**, using **var** only where it is needed
 *   Write all type identifiers in PascalCase : Product, ProductImage
 *   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap
@@ -1664,6 +1667,14 @@ class ViewPropertiesPage
     *   script section
     *   style section
     *   HTML section
+
+## Route rules
+
+*   Routes are written in **kebab-case**.
+*   User files routes start by **/upload/**.
+*   API routes start by **/api/**.
+*   Administration routes start by **/admin/**.
+*   Page data routes use the **POST** verb.
 
 ## Version
 
