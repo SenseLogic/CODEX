@@ -101,14 +101,13 @@ This coding standard targets self-documenting code, and favors readability over 
 *   No consecutive empty lines
 *   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
 *   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) made of singular words : productCount, productArray
-*   Use the singular form in identifiers (messageArray), except for functions (GetMessages) and booleans (HasMessages)
+*   Use the singular form in identifiers (messageArray), except for functions (getMessages) and booleans (hasMessages)
 *   Use the class name in the variable names : addedProductId, productArray
 *   Use the key name in the map names : messageByDateMap
 *   Use standard variable prefixes : first, last, post, prior, next, old, new, initial, final, minimum, maximum
 *   Use standard variable suffixes : Index, Count, Array, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
 *   Use standard path suffixes : FolderPath, FilePath, FileName, FileLabel, FileExtension
 *   Use standard function prefixes : get, find, is, has, clear, set, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable
-*   Declare most JavaScript local variables with **let**, using **var** only where it is needed
 *   Write all type identifiers in PascalCase : Product, ProductImage
 *   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap
 *   Write each function parameter on its own line
@@ -123,11 +122,10 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Use pre-incrementations and pre-decrementations : ++productIndex
 *   Use strict equality operators : ===, !==
 *   Test variables against a constant instead of using a falsy test : !== undefined, !== null, !== 0, !== ''
+*   Use **let** to declare scope variables, using **const** only for named constants.
 *   Use script/style/HTML ordering in Svelte components
-*   Write null safe code
-*   Use null values only where absolutely required (Dart optional arguments, etc)
-*   Always use `let` to declare variables, using `const` only for true constants and `var` for hoisted function variables.
 *   Fix all warnings and errors, both during compilation and at runtime.
+*   In Dart, write null safe code, using null values only where required (optional arguments, etc)
 
 ## Sample Svelte component
 
