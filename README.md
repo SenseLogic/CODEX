@@ -78,18 +78,18 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Only push **stable tested code** to the ´develop´ branch, and only after **testing your changes** extensively.
 *   Test those changes again and even more thoroughly when merging them into ´release´, and then ´master`, making sure this won't cause any downtime or loss of data.
 
-*   Use the concise functions provided by the project high level libraries instead of calling directly the low level functions they wrap.
+*   Always use the concise functions provided by the project high level libraries instead of calling directly the low level functions they wrap, to make your code more readable and consistent.
 
 ## Main rules
 
 *   Write **simple and efficient self-documenting code**, where the intent of each line of code is perfectly obvious without any comment or context
 *   Write **short** functions and methods which use **clear non-ambiguous** names for all type, function, variable and constant identifiers
-*   Split your styling code using section comments : IMPORTS, CONSTANTS, ELEMENTS, CLASSES
+*   Split your styling code using section comments : IMPORTS, CONSTANTS, VARIABLES, FUNCTIONS, MIXINS, FONTS, ELEMENTS, CLASSES
 *   Split your imperative code using section comments : IMPORTS, CONSTANTS, VARIABLES, TYPES, ATTRIBUTES, CONSTRUCTORS, INQUIRIES, OPERATIONS, FUNCTIONS, STATEMENTS
 *   Use **Unix line endings**
 *   Use **four spaces** per indentation level and no tabulations
 *   Put braces on their **own line** and **align** them vertically
-*   Put JavaScript multiline return arguments in parentheses
+*   Put JavaScript multiline return values in parentheses
 *   Indent the content of braces, brackets and parentheses by four spaces
 *   Indent closing brackets and parentheses by four spaces
 *   Add exactly a space after { [ ( if while for
@@ -100,10 +100,10 @@ This coding standard targets self-documenting code, and favors readability over 
 *   No empty line after { [ ( and before } ] )
 *   No consecutive empty lines
 *   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
-*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) made of singular words : productCount, productArray
-*   Use the singular form in identifiers (messageArray), except for functions (getMessages) and booleans (hasMessages)
+*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) : productCount, productArray
 *   Use the class name in the variable names : addedProductId, productArray
 *   Use the key name in the map names : messageByDateMap
+*   Use the singular form in all identifiers (messageArray, messageByDateMap), except for functions (getMessages) and booleans (hasMessages)
 *   Use standard variable prefixes : first, last, post, prior, next, old, new, initial, final, minimum, maximum
 *   Use standard variable suffixes : Index, Count, Array, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
 *   Use standard path suffixes : FolderPath, FilePath, FileName, FileLabel, FileExtension
@@ -119,12 +119,13 @@ This coding standard targets self-documenting code, and favors readability over 
 *   Don't use quotes for evaluated HTML attributes : placeholder={ ... }
 *   Use double quotes for HTML attributes : id="..." class="..." style="..." data-name="..." src="..." on:click={ ... }
 *   Use single quotes for string literals
-*   Use pre-incrementations and pre-decrementations : ++productIndex
+*   Use pre-incrementations and pre-decrementations : ++productIndex, --messageCount
 *   Use strict equality operators : ===, !==
 *   Test variables against a constant instead of using a falsy test : !== undefined, !== null, !== 0, !== ''
-*   Use **let** to declare scope variables, using **const** only for named constants.
-*   Use script/style/HTML ordering in Svelte components
-*   Fix all warnings and errors, both during compilation and at runtime.
+*   Use **let** to declare scope variables
+*   Only use **const** to declare global constants
+*   Use the script/style/HTML order in Svelte components
+*   Immediately fix all warnings and errors that you see during compilation or in the runtime console
 *   In Dart, write null safe code, using null values only where required (optional arguments, etc)
 
 ## Sample Svelte component
@@ -1130,7 +1131,7 @@ class ViewPropertiesPage
     *   C# : cs
     *   C : c, h
     *   C++ : cpp, hpp
-    *   Javascript : js
+    *   JavaScript : js
     *   HTML : html
     *   CSS : css
 
@@ -1258,11 +1259,41 @@ class ViewPropertiesPage
 
 *   Name the unit test class by simply adding a `_TEST` suffix to the class name.
 
+## JavaScript rules
+
+*   Use the string slice() method instead of substring().
+
 ## CSS rules
 
 *   Use double quotes for string literals.
 
 *   Name your **ids** and **classes** in **kebab-case**, without articles.
+
+*   Start modifier classes with a verb in the indicative mood (is-, has-, ...).
+
+    ```css
+    // -- CLASSES
+
+    .is-hidden
+    {
+        display: none !important;
+    }
+
+    .button
+    {
+        ...
+    }
+
+    .button.is-active
+    {
+        ...
+    }
+
+    .button.is-selected
+    {
+        ...
+    }
+    ```
 
 *   Use :
     *   **unitless** values for line heights.
@@ -1282,7 +1313,7 @@ class ViewPropertiesPage
     *   Elements
     *   Classes
 
-*   Delimitate rule sections with standard comments.
+*   Delimitate those sections with standard comments.
 
     ```cs
     // -- IMPORTS
@@ -1643,7 +1674,7 @@ class ViewPropertiesPage
 *   Declare tag **attributes** in this order :
 
     *   id
-    *   class sorted by increasing specificity
+    *   class sorted by increasing specificity, but ending with the modifier classes
     *   style sorted as explained above
     *   data-* in alphabetical order
     *   tag-specific attributes (src, href, etc) in alphabetical order
@@ -1651,7 +1682,7 @@ class ViewPropertiesPage
 
     ```html
     <div id="header-menu-home-button"
-         class="button scaled-button header-menu-button header-menu-home-button"
+         class="button scaled-button header-menu-button header-menu-home-button is-active is-selected is-hidden"
          style="margin-left: auto; background-image: url( '/static/image/header_menu/home_button.svg' )"
          data-view-name="home"
          onclick="ShowView( 'home' )">
