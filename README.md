@@ -130,7 +130,7 @@ This coding standard targets self-documenting code, and favors readability over 
 
 ## Sample Svelte component
 
-```
+```html
 <script>
     // -- IMPORTS
 
@@ -433,6 +433,187 @@ This coding standard targets self-documenting code, and favors readability over 
         { ageInterval.firstAge } - { ageInterval.lastAge }
     </p>
 </main>
+```
+
+## Sample JavaScript service
+
+```js
+// -- IMPORTS
+
+import { getMapByCode, logError } from 'senselogic-gist';
+import { databaseService } from './database_service';
+
+// -- FUNCTIONS
+
+class CountryService
+{
+    // -- CONSTRUCTORS
+
+    constructor(
+        )
+    {
+        this.cachedCountryArray = null;
+        this.cachedCountryArrayTimestamp = 0;
+
+        this.cachedCountryByCodeMap = null;
+        this.cachedCountryByCodeMapTimestamp = 0;
+    }
+
+    // -- INQUIRIES
+
+    async getCountryArray(
+        )
+    {
+        let { data, error } =
+            await databaseService.getClient()
+                .from( 'COUNTRY' )
+                .select();
+
+        if ( error !== null )
+        {
+            logError( error );
+        }
+
+        return data;
+    }
+
+    // ~~
+
+    async getCountryByCode(
+        countryCode
+        )
+    {
+        let { data, error } =
+            await databaseService.getClient()
+                .from( 'COUNTRY' )
+                .select()
+                .eq( 'code', countryCode );
+
+        if ( error !== null )
+        {
+            logError( error );
+        }
+
+        if ( data !== null )
+        {
+            return data[ 0 ];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    // -- OPERATIONS
+
+    clearCache(
+        )
+    {
+        this.cachedCountryArray = null;
+        this.cachedCountryByCodeMap = null;
+    }
+
+    // ~~
+
+    async getCachedCountryArray(
+        )
+    {
+        if ( this.cachedCountryArray === null
+             || Date.now() > this.cachedCountryArrayTimestamp + 300000 )
+        {
+            this.cachedCountryArray = await this.getCountryArray();
+            this.cachedCountryArrayTimestamp = Date.now();
+        }
+
+        return this.cachedCountryArray;
+    }
+
+    // ~~
+
+    async getCachedCountryByCodeMap(
+        )
+    {
+        if ( this.cachedCountryByCodeMap === null
+             || Date.now() > this.cachedCountryByCodeMapTimestamp + 300000 )
+        {
+            this.cachedCountryByCodeMap = getMapByCode( await this.getCachedCountryArray() );
+            this.cachedCountryByCodeMapTimestamp = Date.now();
+        }
+
+        return this.cachedCountryByCodeMap;
+    }
+
+    // ~~
+
+    async addCountry(
+        country
+        )
+    {
+        this.clearCache();
+
+        let { data, error } =
+            await databaseService.getClient()
+                .from( 'COUNTRY' )
+                .insert( country );
+
+        if ( error !== null )
+        {
+            logError( error );
+        }
+
+        return data;
+    }
+
+    // ~~
+
+    async setCountryByCode(
+        country,
+        countryCode
+        )
+    {
+        this.clearCache();
+
+        let { data, error } =
+            await databaseService.getClient()
+                .from( 'COUNTRY' )
+                .update( country )
+                .eq( 'code', countryCode );
+
+        if ( error !== null )
+        {
+            logError( error );
+        }
+
+        return data;
+    }
+
+    // ~~
+
+    async removeCountryByCode(
+        countryCode
+        )
+    {
+        this.clearCache();
+
+        let { data, error } =
+            await databaseService.getClient()
+                .from( 'COUNTRY' )
+                .delete()
+                .eq( 'code', countryCode );
+
+        if ( error !== null )
+        {
+            logError( error );
+        }
+
+        return data;
+    }
+}
+
+// -- VARIABLES
+
+export let countryService
+    = new CountryService();
 ```
 
 ## Sample Dart entity class
@@ -1067,7 +1248,7 @@ class ViewPropertiesPage
                  && tankHealth > 0.5 ) );
     ```
 
-*   In multiline assignments, the operator can also be put at the end of the first line, to ease code indentation :
+*   In multiline assignments, if the value starts with a bracket or a brace, the operator can be put at the end of the first line, to ease manual code indentation :
 
     ```html
     <div
@@ -1075,14 +1256,14 @@ class ViewPropertiesPage
             {
                 ( shot ) =>
                 {
-                    let shellHitsTower =
-                        ( ( tower.getDistance(
-                                towerTarget,
-                                weaponType
-                                )
-                            > tower.maximumShootingDistance )
-                          || ( tankDistance > maximum distance
-                               && tankHealth > 0.5 ) );
+                    let shellHitsTower
+                        = ( ( tower.getDistance(
+                                  towerTarget,
+                                  weaponType
+                                  )
+                              > tower.maximumShootingDistance )
+                            || ( tankDistance > maximum distance
+                                 && tankHealth > 0.5 ) );
                 }
             }
     >
