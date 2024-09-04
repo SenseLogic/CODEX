@@ -2,131 +2,131 @@
 
 # Codex
 
-Language-agnostic coding standard.
+A language-agnostic coding standard.
 
 ## Goals
 
-Efficiently develop code and applications in a disciplined manner which ensures the following qualities :
+The objective is to develop code and applications efficiently and with discipline, ensuring the following qualities :
 
-*   **Adequate** : perfectly matches the user needs.
-*   **Efficient** : minimizes processing and waiting times to avoid frustration and maximize productivity.
-*   **Attractive** : allows interaction through a nice looking interface.
-*   **Ergonomic** : can be used in an intuitive and productive manner.
-*   **Robust** : runs without crash even under bad connectivity conditions.
-*   **Secure** : protects the data from being lost, corrupted, stolen or hacked.
-*   **Maintainable** : is easy to fix and enhance by any programmer in the team.
-*   **Extensible** : is easy to extend with new features by reusing existing components.
-*   **Consistent** : looks like it has been designed and implemented by a single developer.
+*   **Adequate** : Meets user needs perfectly.
+*   **Efficient** : Minimizes processing and waiting times, reducing frustration and maximizing productivity.
+*   **Attractive** : Provides a visually appealing interface.
+*   **Ergonomic** : Offers an intuitive and productive user experience.
+*   **Robust** : Remains stable, even in poor connectivity conditions.
+*   **Secure** : Protects data from loss, corruption, theft, or hacking.
+*   **Maintainable** : Can be easily fixed or improved by any team member.
+*   **Extensible** : Allows new features to be added easily through reusable components.
+*   **Consistent** : Appears as though designed and implemented by a single developer.
 
-## Specificity
+## Specifics
 
-This coding standard targets self-documenting code, and favors readability over compactness by :
+This coding standard emphasizes self-documenting code and prioritizes readability over compactness by :
 
-*   forbidding the use of cryptic acronyms, abbreviations, prefixes and suffixes;
-*   including the class name in attributes and variable names.
+*   Prohibiting the use of cryptic acronyms, abbreviations, prefixes, or suffixes.
+*   Requiring class names to be part of the attributes and variable names.
 
 ## Principles
 
-*   **Design before you code** by quickly writing :
+*   Be a source of **order**, not chaos.
 
-    *   a short text or UI flow showing how to use the application, to optimize the **user interface** before implementing it;
-    *   a short text or database design showing how the information will be stored, to optimize the **data architecture** before implementing it;
-    *   a short text or component design showing how the application will be structured, to optimize the **component architecture** before implementing it;
-    *   a short text or test code showing how to use the application components, to optimize the **component interface** before implementing it.
+*   Always leave the code in a **better state than you found it**, so even if you're in a hurry :
+    *   Immediately fix any **design or implementation flaws** you encounter, because if you don't, no one else will, and technical debt will accumulate, eventually crippling the entire project.
+    *   Continue to write **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
 
-*   Develop programs **gradually**, starting with the data components, then implementing one external feature at a time.
+*   **Never waste performance**—poor performance will eventually come back to haunt you.
 
-*   Don't overgineer your code, choose **simple modular designs** which can easily be extended.
+*   **Design before you code** by quickly drafting :
+    *   A short text or UI flow showing how to use the application, to optimize the **user interface** before implementation.
+    *   A brief document or database design showing how data will be stored, to optimize the **data architecture** before implementation.
+    *   A short description or component design outlining the application's structure, to optimize the **component architecture** before implementation.
+    *   A brief text or test code showing how to use the application's components, to optimize the **component interface** before implementation.
 
-*   Don't repeat yourself, create **reusable components** that you can use several times across one or several projects.
+*   Develop programs **incrementally**, starting with the data components and adding external features one at a time.
 
-*   Develop the application and its components with **simple** **efficient** **maintainable** code that :
-    *   is **stable** and **robust**;
-    *   is **easy to understand** just by itself, without comments or surrounding context;
-    *   can be easily **extended** and debugged by any programmer in the team;
-    *   minimizes **software entropy**, by maintaining an **orderly structure** over time and **fully** complying with the coding standard.
+*   Don't over-engineer your code; choose **simple, modular designs** that can be easily extended.
 
-*   Instead of adding comments to explain the code intent, **refactor the code itself** to make this intent obvious by :
+*   Avoid repetition; create **reusable components** that can be used across multiple projects.
 
-    *   using **clear consistent unambiguous names** for all classes, attributes, functions, parameters and variables;
-    *   using local variables to store **intermediate results**;
-    *   splitting long functions into several **smaller functions** called in sequence;
-    *   keeping your functions small enough so that they **just do what their name says**, and nothing more;
-    *   implement **English-like code** that reads so naturally that even a child could understand what it does.
+*   Develop the application and its components with **simple**, **efficient**, and **maintainable** code that :
+    *   Is **stable** and **robust**.
+    *   Is **easy to understand** on its own, without needing comments or additional context.
+    *   Can be easily **extended** and debugged by any team member.
+    *   Minimizes **software entropy** by maintaining an **orderly structure** and fully adhering to the coding standard.
 
-*   Even if you are on a hurry :
-    *   immediately fix any **design or implementation flaw** you see, or else technical debt will accumulate, and thus drastically slow you down in the future.
-    *   continue to develop **clean maintainable code** to limit sofware entropy, as this will help you **ship faster** by keeping a high level of productivity even if the project size and complexity grow over time.
+*   Instead of adding comments to explain the code's intent, **refactor the code** to make that intent clear by :
+    *   Using **clear, consistent, and unambiguous names** for all classes, attributes, functions, parameters, and variables.
+    *   Using local variables to store **intermediate results**.
+    *   Breaking down long functions into smaller, **sequenced functions**.
+    *   Keeping functions focused so they **only perform the task their name suggests**, and nothing more.
+    *   Writing **readable, English-like code** that even a child could understand.
 
-*   Be a source of **order** instead of chaos, so always leave the code in a better state than you found it.
+*   Ensure the application is **resilient** to external conditions (e.g., network failures, missing or corrupted files).
 
-*   Make the application **resilient** to external conditions (network failures, missing or corrupted files, etc).
+*   Validate method parameters using **assertions** in debug builds.
 
-*   Check invalid method parameters with **assertions** in the debug build.
+*   For performance optimization, prioritize :
+    *   Public attributes over getters and setters.
+    *   Public non-virtual methods.
+    *   Virtual methods over delegates.
+    *   State classes over coroutines.
 
-*   For performance reasons, preferably use :
+*   Use private attributes and methods only when necessary.
 
-    *   public attributes without getters and setters.
-    *   public non-virtual methods.
-    *   virtual methods instead of delegates.
-    *   state classes instead of coroutines.
+*   Create automated **unit tests** for your code.
 
-*   Use private attributes and methods only where you need to.
+*   Only push **stable, tested code** to the 'develop' branch, and do so only after thoroughly **testing your changes**.
 
-*   Create automated **unit tests**.
+*   Test these changes even more rigorously when merging into 'release' or 'master', ensuring they won't cause downtime or data loss.
 
-*   Only push **stable tested code** to the ´develop´ branch, and only after **testing your changes** extensively.
-*   Test those changes again and even more thoroughly when merging them into ´release´, and then ´master`, making sure this won't cause any downtime or loss of data.
-
-*   Always use the concise functions provided by the project high level libraries instead of calling directly the low level functions they wrap, to make your code more readable and consistent.
+*   Always use the concise functions provided by the project's high-level libraries, rather than directly calling the low-level functions they wrap, to keep your code **more readable and consistent**.
 
 ## Main rules
 
-*   Write **simple and efficient self-documenting code**, where the intent of each line of code is perfectly obvious without any comment or context
-*   Write **short** functions and methods which use **clear non-ambiguous** names for all type, function, variable and constant identifiers
-*   Split your styling code using section comments : IMPORTS, CONSTANTS, VARIABLES, FUNCTIONS, MIXINS, FONTS, ELEMENTS, CLASSES
-*   Split your imperative code using section comments : IMPORTS, CONSTANTS, VARIABLES, TYPES, ATTRIBUTES, CONSTRUCTORS, INQUIRIES, OPERATIONS, FUNCTIONS, STATEMENTS
-*   Use **Unix line endings**
-*   Use **four spaces** per indentation level and no tabulations
-*   Put braces on their **own line** and **align** them vertically
-*   Put JavaScript multiline return values in parentheses
-*   Indent the content of braces, brackets and parentheses by four spaces
-*   Indent closing brackets and parentheses by four spaces
-*   Add exactly a space after { [ ( if while for
-*   Add exactly a space before } ] )
-*   No space between {} [] ()
-*   Add an empty line before if while for return
-*   Split multiline arrow functions after the => operator
+*   Write **simple and efficient self-documenting code**, where the intent of each line of code is perfectly obvious without any comment or context.
+*   Write **short** functions and methods which use **clear non-ambiguous** names for all type, function, variable and constant identifiers.
+*   Split your styling code using section comments : IMPORTS, CONSTANTS, VARIABLES, FUNCTIONS, MIXINS, FONTS, ELEMENTS, CLASSES.
+*   Split your imperative code using section comments : IMPORTS, CONSTANTS, VARIABLES, TYPES, ATTRIBUTES, CONSTRUCTORS, INQUIRIES, OPERATIONS, FUNCTIONS, STATEMENTS.
+*   Use **Unix line endings**.
+*   Use **four spaces** per indentation level and no tabulations.
+*   Put braces on their **own line** and **align** them vertically.
+*   Put JavaScript multiline return values in parentheses.
+*   Indent the content of braces, brackets and parentheses by four spaces.
+*   Indent closing brackets and parentheses by four spaces.
+*   Add exactly a space after: { [ ( if while for.
+*   Add exactly a space before: } ] ).
+*   No space between: {} [] ().
+*   Add an empty line before: if while for return.
+*   Split multiline arrow functions after the => operator.
 *   No empty line after { [ ( and before } ] )
-*   No consecutive empty lines
-*   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components)
-*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) : productCount, productArray
-*   Use the class name in the variable names : addedProductId, productArray
-*   Use the key name in the map names : messageByDateMap
-*   Use the singular form in all identifiers (messageArray, messageByDateMap), except for functions (getMessages) and booleans (hasMessages)
-*   Use standard variable prefixes : first, last, post, prior, next, old, new, initial, final, minimum, maximum
-*   Use standard variable suffixes : Index, Count, Array, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path
-*   Use standard path suffixes : FolderPath, FilePath, FileName, FileLabel, FileExtension
-*   Use standard function prefixes : get, find, is, has, clear, set, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable
-*   Write all type identifiers in PascalCase : Product, ProductImage
-*   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap
-*   Write each function parameter on its own line
-*   Don't add an ending comma to array literals
-*   Declare standard functions and methods instead of arrow functions
-*   Use arrow functions only as call arguments
-*   Declare HTML attributes in this order : id, class, style, data-, tag-specific, on:
-*   Order classes from low to high level : class="icon green-search-icon product-filter-button"
-*   Don't use quotes for evaluated HTML attributes : placeholder={ ... }
-*   Use double quotes for HTML attributes : id="..." class="..." style="..." data-name="..." src="..." on:click={ ... }
-*   Use single quotes for string literals
-*   Use pre-incrementations and pre-decrementations : ++productIndex, --messageCount
-*   Use strict equality operators : ===, !==
-*   Test variables against a constant instead of using a falsy test : !== undefined, !== null, !== 0, !== ''
-*   Use **let** to declare scope variables
-*   Only use **const** to declare global constants
-*   Use the script/style/HTML order in Svelte components
-*   Immediately fix all warnings and errors that you see during compilation or in the runtime console
-*   In Dart, write null safe code, using null values only where required (optional arguments, etc)
+*   No consecutive empty lines.
+*   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components).
+*   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) : productCount, productArray.
+*   Use the class name in the variable names : addedProductId, productArray.
+*   Use the key name in the map names : messageByDateMap.
+*   Use the singular form in all identifiers (messageArray, messageByDateMap), except for functions (getMessages) and booleans (hasMessages).
+*   Use standard variable prefixes : first, last, post, prior, next, old, new, initial, final, minimum, maximum.
+*   Use standard variable suffixes : Index, Count, Array, Map, Id, Uuid, Tuid, Code, Name, Text, Time, Path.
+*   Use standard path suffixes : FolderPath, FilePath, FileName, FileLabel, FileExtension.
+*   Use standard function prefixes : get, find, is, has, clear, set, add, remove, start, stop, begin, end, enter, exit, open, close, read, write, enable, disable.
+*   Write all type identifiers in PascalCase : Product, ProductImage.
+*   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap.
+*   Write each function parameter on its own line.
+*   Don't add an ending comma to array literals.
+*   Declare standard functions and methods instead of arrow functions.
+*   Use arrow functions only as call arguments.
+*   Declare HTML attributes in this order : id, class, style, data-, tag-specific, on.
+*   Order classes from low to high level : class="icon green-search-icon product-filter-button".
+*   Don't use quotes for evaluated HTML attributes : placeholder={ ... }.
+*   Use double quotes for HTML attributes : id="..." class="..." style="..." data-name="..." src="..." on:click={ ... }.
+*   Use single quotes for string literals.
+*   Use pre-incrementations and pre-decrementations : ++productIndex, --messageCount.
+*   Use strict equality operators : ===, !==.
+*   Test variables against a constant instead of using a falsy test : !== undefined, !== null, !== 0, !== ''.
+*   Use **let** to declare scope variables.
+*   Only use **const** to declare global constants.
+*   Use the script/style/HTML order in Svelte components.
+*   Immediately fix all warnings and errors that you see during compilation or in the runtime console.
+*   In Dart, write null safe code, using null values only where required (optional arguments, etc).
 
 ## Sample Svelte component
 
@@ -454,9 +454,7 @@ class CountryService
     {
         this.cachedCountryArray = null;
         this.cachedCountryArrayTimestamp = 0;
-
         this.cachedCountryByCodeMap = null;
-        this.cachedCountryByCodeMapTimestamp = 0;
     }
 
     // -- INQUIRIES
@@ -523,6 +521,7 @@ class CountryService
         {
             this.cachedCountryArray = await this.getCountryArray();
             this.cachedCountryArrayTimestamp = Date.now();
+            this.cachedCountryByCodeMap = null;
         }
 
         return this.cachedCountryArray;
@@ -534,10 +533,9 @@ class CountryService
         )
     {
         if ( this.cachedCountryByCodeMap === null
-             || Date.now() > this.cachedCountryByCodeMapTimestamp + 300000 )
+             || Date.now() > this.cachedCountryArrayTimestamp + 300000 )
         {
             this.cachedCountryByCodeMap = getMapByCode( await this.getCachedCountryArray() );
-            this.cachedCountryByCodeMapTimestamp = Date.now();
         }
 
         return this.cachedCountryByCodeMap;
@@ -1882,8 +1880,8 @@ class ViewPropertiesPage
 
 *   Routes are written in **kebab-case**.
 *   User files routes start by **/upload/**.
-*   API routes start by **/api/**.
 *   Administration routes start by **/admin/**.
+*   API routes start by **/api/**.
 *   Page data routes use the **POST** verb.
 
 ## Version
