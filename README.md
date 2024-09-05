@@ -33,7 +33,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
     *   Immediately fix any **design or implementation flaws** you encounter, because if you don't, no one else will, and technical debt will accumulate, eventually crippling the entire project.
     *   Continue to write **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
 
-*   **Never waste performance**—poor performance will eventually come back to haunt you.
+*   **Never waste performance**, or poor performance will eventually come back to haunt you.
 
 *   **Design before you code** by quickly drafting :
     *   A short text or UI flow showing how to use the application, to optimize the **user interface** before implementation.
@@ -1246,7 +1246,7 @@ class ViewPropertiesPage
                  && tankHealth > 0.5 ) );
     ```
 
-*   In multiline assignments, if the value starts with a bracket or a brace, the operator can be put at the end of the first line, to ease manual code indentation :
+*   To ease code indentation, if the multiline expression starts with a bracket or a function call, the assignment operator can alternatively be put at the end of the first line :
 
     ```html
     <div
