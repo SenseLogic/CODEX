@@ -1879,10 +1879,30 @@ class ViewPropertiesPage
 ## Route rules
 
 *   Routes are written in **kebab-case**.
-*   User files routes start by **/upload/**.
+*   Storage uploaded files routes start by **/upload/**.
+*   CDN global files routes start by **/global/**.
+*   Server local files routes start by **/local/**.
 *   Administration routes start by **/admin/**.
 *   API routes start by **/api/**.
 *   Page data routes use the **POST** verb.
+
+## Asset path rules
+
+*   Database media paths start by either :
+    *   **/upload/**
+    *   **/global/**
+    *   **/local/**
+*   Documents are stored in a **document/** subfolder.
+*   Images are stored in an **image/** subfolder.
+*   Videos are stored in a **video/** subfolder.
+*   User files are stored in a **user/{profile id}/** subfolder.
+*   File names are normalized to only contain the following characters : letters, numbers, hyphen, underscore, dot.
+*   Uploaded images are stored in their native format and resolution with a timestamp suffix, and then converted to global images.
+*   Global and local raster images are stored in AVIF format in the following surface-limited resolutions :
+    *  image_name.640.avif = up to 230400 pixels (640x360).
+    *  image_name.1280.avif = up to 921600 pixels (1280x720).
+    *  image_name.1920.avif = up to 2073600 pixels (1920x1080).
+    *  image_name.3840.avif = up to 8294400 pixels (3840x2160).
 
 ## Version
 
