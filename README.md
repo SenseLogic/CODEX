@@ -1896,7 +1896,7 @@ class ViewPropertiesPage
 *   Images are stored in an **image/** subfolder.
 *   Videos are stored in a **video/** subfolder.
 *   User files are stored in a **user/{profile id}/** subfolder.
-*   File names are normalized to only contain the following characters : letters, numbers, hyphen, underscore, dot.
+*   File names are normalized to only contain the following characters : letters, numbers, hyphens, underscores, dots.
 *   Uploaded images are stored in their native format and resolution with a timestamp suffix, and then converted to global images.
 *   Global and local raster images are stored in AVIF format in the following surface-limited resolutions :
     *  image_name.640.avif = up to 230400 pixels (640x360).
