@@ -1888,21 +1888,22 @@ class ViewPropertiesPage
 
 ## Asset path rules
 
-*   Database media paths start by either :
-    *   **/upload/**
-    *   **/global/**
-    *   **/local/**
+*   Database media paths starting with :
+    *   **/upload/** refer to user-uploaded files.
+    *   **/global/** refet to files distributed via the CDN.
 *   Documents are stored in a **document/** subfolder.
 *   Images are stored in an **image/** subfolder.
 *   Videos are stored in a **video/** subfolder.
-*   User files are stored in a **user/{profile id}/** subfolder.
-*   File names are normalized to only contain the following characters : letters, numbers, hyphens, underscores, dots.
-*   Uploaded images are stored in their native format and resolution with a timestamp suffix, and then converted to global images.
-*   Global and local raster images are stored in AVIF format in the following surface-limited resolutions :
-    *  image_name.640.avif = up to 230400 pixels (640x360).
-    *  image_name.1280.avif = up to 921600 pixels (1280x720).
-    *  image_name.1920.avif = up to 2073600 pixels (1920x1080).
-    *  image_name.3840.avif = up to 8294400 pixels (3840x2160).
+*   User-specific files are stored in a **user/{profile_id}/** subfolder.
+*   File names are normalized to include only the following characters: letters, numbers, hyphens, underscores, and dots.
+*   Uploaded images are saved in their original format and resolution with a timestamp suffix. They are then converted into global images.
+*   Both global and local raster images are stored in the AVIF format, resized to the following widths:
+    *  image_name.384.avif
+    *  image_name.640.avif
+    *  image_name.1280.avif
+    *  image_name.1920.avif
+    *  image_name.3840.avif
+*   The smallest size (384 pixels) is used as a placeholder until the full image is loaded
 
 ## Version
 
