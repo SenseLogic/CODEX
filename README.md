@@ -33,7 +33,12 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
     *   Immediately fix any **design or implementation flaws** you encounter, because if you don't, no one else will, and technical debt will accumulate, eventually crippling the entire project.
     *   Continue to write **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
 
-*   **Never waste performance**, or poor performance will eventually come back to haunt you.
+*   **Never waste performance**, or poor performance will eventually come back to haunt you, so :
+    *   Don't repeat expensive operations at close intervals.
+    *   Use short term caches to reuse recent database queries results if you can.
+    *   Don't use the original images and videos in your website pages.
+    *   Only use optimized versions of smaller dimensions which have been reencoded at much higher compression ratios.
+    *   Use dictionaries to avoid iterating several times over big arrays.
 
 *   **Design before you code** by quickly drafting :
     *   A short text or UI flow showing how to use the application, to optimize the **user interface** before implementation.
@@ -45,7 +50,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 
 *   Don't over-engineer your code; choose **simple, modular designs** that can be easily extended.
 
-*   Avoid repetition; create **reusable components** that can be used across multiple projects.
+*   Don't repeat yourself, so create **reusable code and components** that can be used across multiple projects.
 
 *   Develop the application and its components with **simple**, **efficient**, and **maintainable** code that :
     *   Is **stable** and **robust**.
@@ -1879,31 +1884,32 @@ class ViewPropertiesPage
 ## Route rules
 
 *   Routes are written in **kebab-case**.
-*   Storage uploaded files routes start by **/upload/**.
-*   CDN global files routes start by **/global/**.
-*   Server local files routes start by **/local/**.
+*   Local files routes start by **/local/**.
+*   Uploaded files routes start by **/upload/**.
+*   CDN files routes start by **/global/**.
 *   Administration routes start by **/admin/**.
 *   API routes start by **/api/**.
 *   Page data routes use the **POST** verb.
 
 ## Asset path rules
 
-*   Database media paths starting with :
-    *   **/upload/** refer to user-uploaded files.
-    *   **/global/** refet to files distributed via the CDN.
+*   File names are normalized to include only the following characters: letters, numbers, hyphens, underscores and dots.
 *   Documents are stored in a **document/** subfolder.
 *   Images are stored in an **image/** subfolder.
 *   Videos are stored in a **video/** subfolder.
 *   User-specific files are stored in a **user/{profile_id}/** subfolder.
-*   File names are normalized to include only the following characters: letters, numbers, hyphens, underscores, and dots.
-*   Uploaded images are saved in their original format and resolution with a timestamp suffix. They are then converted into global images.
-*   Both global and local raster images are stored in the AVIF format, resized to the following widths:
-    *  image_name.384.avif
-    *  image_name.640.avif
-    *  image_name.1280.avif
-    *  image_name.1920.avif
-    *  image_name.3840.avif
-*   The smallest size (384 pixels) is used as a placeholder until the full image is loaded
+*   Uploaded images are saved with a timestamp suffix at the end of their file label, and kept in their original form or in lossless AVIF file format.
+*   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following predefined widths :
+    *   image_name.360.avif
+    *   image_name.640.avif
+    *   image_name.1280.avif
+    *   image_name.1920.avif
+    *   image_name.3840.avif
+*   Database media paths must use the actual file extension but without size :
+    *   image_name.avif
+*   Both the original and reencoded images share the same relative path and file label.
+*   The website must only use the reencoded versions from the CDN, using the smallest appropriate size.
+*   The smallest image size is temporarily shown while the actual image is loaded.
 
 ## Version
 
