@@ -1899,17 +1899,17 @@ class ViewPropertiesPage
 *   Videos are stored in a **video/** subfolder.
 *   User-specific files are stored in a **user/{profile_id}/** subfolder.
 *   Uploaded images are saved with a timestamp suffix at the end of their file label, and kept in their original form or in lossless AVIF file format.
-*   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following predefined widths :
+*   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following resolutions :
     *   image_name.360.avif
     *   image_name.640.avif
     *   image_name.1280.avif
     *   image_name.1920.avif
     *   image_name.3840.avif
-*   Database media paths must use the actual file extension but without size :
-    *   image_name.avif
+*   Database paths are storage-agnostic and don't specify resolutions :
+    *   /path/to/image_name.avif
 *   Both the original and reencoded images share the same relative path and file label.
-*   The website must only use the reencoded versions from the CDN, using the smallest appropriate size.
-*   The smallest image size is temporarily shown while the actual image is loaded.
+*   The website must only use the images stored on the CDN and at the smallest appropriate resolution.
+*   A low-resolution image is shown while a high-resolution image is loaded.
 
 ## Version
 
