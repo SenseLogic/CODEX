@@ -1881,7 +1881,7 @@ class ViewPropertiesPage
     *   style section
     *   HTML section
 
-## Route rules
+## Web routes rules
 
 *   Routes are written in **kebab-case**.
 *   Local files routes start by **/local/**.
@@ -1891,7 +1891,7 @@ class ViewPropertiesPage
 *   API routes start by **/api/**.
 *   Page data routes use the **POST** verb.
 
-## Asset path rules
+## Web assets rules
 
 *   File names are normalized to include only the following characters: letters, numbers, hyphens, underscores and dots.
 *   Documents are stored in a **document/** subfolder.
@@ -1901,15 +1901,17 @@ class ViewPropertiesPage
 *   Uploaded images are saved with a timestamp suffix at the end of their file label, and kept in their original form or in lossless AVIF file format.
 *   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following resolutions :
     *   image_name.360.avif
+    *   image_name.480.avif
     *   image_name.640.avif
     *   image_name.1280.avif
     *   image_name.1920.avif
     *   image_name.3840.avif
-*   Database paths are storage-agnostic and don't specify resolutions :
-    *   /path/to/image_name.avif
+*   Database paths don't specify resolutions :
+    *   /local/path/to/image_name.avif
+    *   /global/path/to/image_name.avif
 *   Both the original and reencoded images share the same relative path and file label.
 *   The website must only use the images stored on the CDN and at the smallest appropriate resolution.
-*   A low-resolution image is shown while a high-resolution image is loaded.
+*   A low-resolution image should already be visible while the high-resolution image is still loaded.
 
 ## Version
 
