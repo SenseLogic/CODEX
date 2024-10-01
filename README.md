@@ -31,32 +31,35 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 
 *   Always leave the code in a **better state than you found it**, so even if you're in a hurry :
     *   Immediately fix any **design or implementation flaws** you encounter, because if you don't, no one else will, and technical debt will accumulate, eventually crippling the entire project.
-    *   Continue to write **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
+    *   Continue writing **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
 
-*   **Never waste performance**, or poor performance will eventually come back to haunt you, so :
-    *   Don't repeat expensive operations at close intervals.
-    *   Use short term caches to reuse recent database queries results if you can.
-    *   Don't use the original images and videos in your website pages.
-    *   Only use optimized versions of smaller dimensions which have been reencoded at much higher compression ratios.
-    *   Use dictionaries to avoid iterating several times over big arrays.
+*   **Never waste performance**, or poor performance will eventually come back to haunt you :
+    *   Avoid repeating expensive operations like database queries at close intervals.
+    *   Use short-term caches to reuse recent results of expensive operations.
+    *   Don’t use original images and videos directly.
+    *   Use only highly compressed images with smaller dimensions.
+    *   Use dictionaries to avoid iterating multiple times over large arrays.
+    *   Employ efficient algorithms and data structures.
 
 *   **Design before you code** by quickly drafting :
-    *   A short text or UI flow showing how to use the application, to optimize the **user interface** before implementation.
-    *   A brief document or database design showing how data will be stored, to optimize the **data architecture** before implementation.
-    *   A short description or component design outlining the application's structure, to optimize the **component architecture** before implementation.
-    *   A brief text or test code showing how to use the application's components, to optimize the **component interface** before implementation.
+    *   A short text or UI flow to optimize the **user interface** before implementation.
+    *   A brief document or database design to optimize the **data architecture** before implementation.
+    *   A short description or component design outlining the application's structure to optimize the **component architecture** before implementation.
+    *   A brief usage example or test code to optimize the **component interface** before implementation.
 
 *   Develop programs **incrementally**, starting with the data components and adding external features one at a time.
 
 *   Don't over-engineer your code; choose **simple, modular designs** that can be easily extended.
 
-*   Don't repeat yourself, so create **reusable code and components** that can be used across multiple projects.
+*   Don't repeat yourself, create **reusable code and components** that can be used across multiple projects.
 
 *   Develop the application and its components with **simple**, **efficient**, and **maintainable** code that :
     *   Is **stable** and **robust**.
-    *   Is **easy to understand** on its own, without needing comments or additional context.
+    *   Is **easy to understand** on its own, without requiring comments or additional context.
     *   Can be easily **extended** and debugged by any team member.
-    *   Minimizes **software entropy** by maintaining an **orderly structure** and fully adhering to the coding standard.
+    *   Minimizes **dependencies** on external libraries.
+    *   Minimizes **memory, CPU, disk, and network usage** so it can load and run quickly, even on low-end hardware.
+    *   Minimizes **software entropy** by maintaining an **orderly structure** and fully adhering to coding standards.
 
 *   Instead of adding comments to explain the code's intent, **refactor the code** to make that intent clear by :
     *   Using **clear, consistent, and unambiguous names** for all classes, attributes, functions, parameters, and variables.
