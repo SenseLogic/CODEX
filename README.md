@@ -39,7 +39,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
     *   Don’t use original images and videos directly.
     *   Use only highly compressed images with smaller dimensions.
     *   Use dictionaries to avoid iterating multiple times over large arrays.
-    *   Employ efficient algorithms and data structures.
+    *   Use efficient algorithms and data structures.
 
 *   **Design before you code** by quickly drafting :
     *   A short text or UI flow to optimize the **user interface** before implementation.
