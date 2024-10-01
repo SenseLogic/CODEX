@@ -49,7 +49,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 
 *   Develop programs **incrementally**, starting with the data components and adding external features one at a time.
 
-*   Don't over-engineer your code; choose **simple, modular designs** that can be easily extended.
+*   Don't over-engineer your code, choose **simple, modular designs** that can be easily extended.
 
 *   Don't repeat yourself, create **reusable code and components** that can be used across multiple projects.
 
