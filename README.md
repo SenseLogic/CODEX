@@ -30,7 +30,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 *   Be a source of **order**, not chaos.
 
 *   Always leave the code in a **better state than you found it**, so even if you're in a hurry :
-    *   Immediately fix any **design or implementation flaws** you encounter, because if you don't, no one else will, and technical debt will accumulate, eventually crippling the entire project.
+    *   Immediately fix any **design or implementation flaws** you encounter, because if you do not, no one else will, and technical debt will accumulate, eventually crippling the entire project.
     *   Continue writing **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
 
 *   **Never waste performance**, or poor performance will eventually come back to haunt you :
@@ -49,9 +49,9 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 
 *   Develop programs **incrementally**, starting with the data components and adding external features one at a time.
 
-*   Don't over-engineer your code, choose **simple, modular designs** that can be easily extended.
+*   Do not over-engineer your code, choose **simple, modular designs** that can be easily extended.
 
-*   Don't repeat yourself, create **reusable code and components** that can be used across multiple projects.
+*   Do not repeat yourself, create **reusable code and components** that can be used across multiple projects.
 
 *   Develop the application and its components with **simple**, **efficient**, and **maintainable** code that :
     *   Is **stable** and **robust**.
@@ -107,7 +107,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 *   Split multiline arrow functions after the => operator.
 *   No empty line after { [ ( and before } ] )
 *   No consecutive empty lines.
-*   Don't use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components).
+*   Do not use single letter variable names like a, b, i, j, n (except for x, y, z, w vector components).
 *   Use explicit identifiers without any abbreviated word (except for Id, Uuid, Tuid suffixes) : productCount, productArray.
 *   Use the class name in the variable names : addedProductId, productArray.
 *   Use the key name in the map names : messageByDateMap.
@@ -119,12 +119,12 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 *   Write all type identifiers in PascalCase : Product, ProductImage.
 *   Write all function, variable and constant identifiers in camelCase : product, productImage, productIndex, productCount, productArray, productByIdMap.
 *   Write each function parameter on its own line.
-*   Don't add an ending comma to array literals.
+*   Do not add an ending comma to array literals.
 *   Declare standard functions and methods instead of arrow functions.
 *   Use arrow functions only as call arguments.
 *   Declare HTML attributes in this order : id, class, style, data-, tag-specific, on.
 *   Order classes from low to high level : class="icon green-search-icon product-filter-button".
-*   Don't use quotes for evaluated HTML attributes : placeholder={ ... }.
+*   Do not use quotes for evaluated HTML attributes : placeholder={ ... }.
 *   Use double quotes for HTML attributes : id="..." class="..." style="..." data-name="..." src="..." on:click={ ... }.
 *   Use single quotes for string literals.
 *   Use pre-incrementations and pre-decrementations : ++productIndex, --messageCount.
@@ -1051,7 +1051,7 @@ class ViewPropertiesPage
     }
     ```
 
-*   Don't use abbreviations or single-letter variables.
+*   Do not use abbreviations or single-letter variables.
 
     ```cs
     Tank findTank(
@@ -1340,7 +1340,7 @@ class ViewPropertiesPage
     *   Constructors.
     *   Destructor.
     *   Operators.
-    *   Inquiries : methods which don't change the class attributes.
+    *   Inquiries : methods which do not change the class attributes.
     *   Operations : methods which may change the class attributes.
 
 *   Within a category, declare :
@@ -1417,7 +1417,7 @@ class ViewPropertiesPage
     ...
     ```
 
-*   Don't use standard comments for empty sections.
+*   Do not use standard comments for empty sections.
 
 *   Align multiple lines comments with the surrounding statements, start them with an uppercase character and end them with a period.
 
@@ -1909,12 +1909,12 @@ class ViewPropertiesPage
     *   image_name.1280.avif
     *   image_name.1920.avif
     *   image_name.3840.avif
-*   Database paths don't specify resolutions :
+*   Database paths do not specify resolutions :
     *   /local/path/to/image_name.avif
     *   /global/path/to/image_name.avif
 *   Both the original and reencoded images share the same relative path and file label.
 *   The website must only use the images stored on the CDN and at the smallest appropriate resolution.
-*   A low-resolution image should already be visible while the high-resolution image is still loaded.
+*   A low-resolution image should be displayed initially while the high-resolution image is still loading..
 
 ## Version
 
