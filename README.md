@@ -57,8 +57,8 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
     *   Is **stable** and **robust**.
     *   Is **easy to understand** on its own, without requiring comments or additional context.
     *   Can be easily **extended** and debugged by any team member.
-    *   Minimizes **dependencies** on external libraries.
-    *   Minimizes **memory, CPU, disk, and network usage** so it can load and run quickly, even on low-end hardware.
+    *   Minimizes **dependencies** on external libraries, in line with a minimalist approach.
+    *   Minimizes **memory, CPU, disk, and network usage**, ensuring quick load times and high performance even on low-end hardware.
     *   Minimizes **software entropy** by maintaining an **orderly structure** and fully adhering to coding standards.
 
 *   Instead of adding comments to explain the code's intent, **refactor the code** to make that intent clear by :
@@ -80,13 +80,17 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 
 *   Use private attributes and methods only when necessary.
 
-*   Create automated **unit tests** for your code.
+*   Create automated **unit tests** for all your code.
 
-*   Only push **stable, tested code** to the 'develop' branch, and do so only after thoroughly **testing your changes**.
+*   Only push **stable code** to the 'develop' branch after thoroughly testing all changes.
 
-*   Test these changes even more rigorously when merging into 'release' or 'master', ensuring they won't cause downtime or data loss.
+*   When merging into 'release' or 'master', conduct even more **rigorous testing** to ensure that changes do not cause downtime or data loss.
 
-*   Always use the concise functions provided by the project's high-level libraries, rather than directly calling the low-level functions they wrap, to keep your code **more readable and consistent**.
+*   Always use the concise functions provided by the project's high-level libraries, rather than directly calling the underlying low-level functions, to maintain **readability and consistency** in the code.
+
+*   Keep the project as simple as possible, continuously removing unnecessary complexity in line with the "Less is more" philosophy.
+
+*   Regularly update the project to the **latest stable versions** of all tools and dependencies it relies on.
 
 ## Main rules
 
