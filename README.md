@@ -82,9 +82,15 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 
 *   Create automated **unit tests** for all your code.
 
-*   Only push **stable code** to the 'develop' branch after thoroughly testing all changes.
+*   Only push **stable** changes after **thoroughly testing** them.
 
-*   When merging into 'release' or 'master', conduct even more **rigorous testing** to ensure that changes do not cause downtime or data loss.
+*   Develop features on their own branches.
+
+*   Merge the feature branch changes into the **develop** branch and test them rigorously to ensure that they do not cause downtime or data loss.
+
+*   Merge the **develop** branch changes into the **release** branch and test them again.
+
+*   Merge the **release** branch changes into the **master** branch and test them once more.
 
 *   Always use the concise functions provided by the project's high-level libraries, rather than directly calling the underlying low-level functions, to maintain **readability and consistency** in the code.
 
@@ -1907,18 +1913,19 @@ class ViewPropertiesPage
 *   User-specific files are stored in a **user/{profile_id}/** subfolder.
 *   Uploaded images are saved with a timestamp suffix at the end of their file label, and kept in their original form or in lossless AVIF file format.
 *   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following resolutions :
-    *   image_name.360.avif
-    *   image_name.480.avif
-    *   image_name.640.avif
-    *   image_name.1280.avif
-    *   image_name.1920.avif
-    *   image_name.3840.avif
+    *   image_name.360.avif (placeholder)
+    *   image_name.480.avif (4 columns)
+    *   image_name.640.avif (3 columns)
+    *   image_name.960.avif (2 columns)
+    *   image_name.1280.avif (2/3 width)
+    *   image_name.1920.avif (full width)
+    *   image_name.3840.avif (4K full width)
 *   Database paths do not specify resolutions :
     *   /local/path/to/image_name.avif
     *   /global/path/to/image_name.avif
 *   Both the original and reencoded images share the same relative path and file label.
 *   The website must only use the images stored on the CDN and at the smallest appropriate resolution.
-*   A low-resolution image should be displayed initially while the high-resolution image is still loading..
+*   A preloaded low-resolution placeholder image should be displayed while the high-resolution image is loading.
 
 ## Version
 
