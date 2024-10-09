@@ -1793,10 +1793,25 @@ class ViewPropertiesPage
         *   font
         *   font-family
         *   font-size
+        *   font-size-adjust
+        *   font-optical-sizing
         *   font-weight
         *   font-style
         *   font-stretch
+        *   font-kerning
+        *   font-language-override
+        *   font-feature-settings
         *   font-variant
+        *   font-variant
+        *   font-variant-alternates
+        *   font-variant-caps
+        *   font-variant-east-asian
+        *   font-variant-emoji
+        *   font-variant-ligatures
+        *   font-variant-numeric
+        *   font-variant-position
+        *   font-variation-settings
+        *   hyphens
         *   white-space
         *   overflow-wrap
         *   word-wrap
