@@ -1928,13 +1928,14 @@ class ViewPropertiesPage
 *   User-specific files are stored in a **user/{profile_id}/** subfolder.
 *   Uploaded images are saved with a timestamp suffix at the end of their file label, and kept in their original form or in lossless AVIF file format.
 *   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following resolutions :
-    *   image_name.360.avif (placeholder)
-    *   image_name.480.avif (4 columns)
-    *   image_name.640.avif (3 columns)
-    *   image_name.960.avif (2 columns)
-    *   image_name.1280.avif (2/3 width)
-    *   image_name.1920.avif (full width)
-    *   image_name.3840.avif (4K full width)
+    *   image_name.360.avif (placeholder at 30% quality)
+    *   image_name.480.avif (4 columns at 55% quality)
+    *   image_name.640.avif (3 columns at 55% quality)
+    *   image_name.960.avif (2 columns at 55% quality)
+    *   image_name.1280.avif (2/3 width at 55% quality)
+    *   image_name.1920.avif (full width at 55% quality)
+    *   image_name.3840.avif (double width at 55% quality)
+*   The image is resized to match the target width while preserving the original aspect ratio, but with the target height limited to twice the original width.
 *   Database paths do not specify resolutions :
     *   /local/path/to/image_name.avif
     *   /global/path/to/image_name.avif
