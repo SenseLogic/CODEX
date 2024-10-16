@@ -1921,27 +1921,27 @@ class ViewPropertiesPage
 
 ## Web assets rules
 
-*   File names are normalized to include only the following characters: letters, numbers, hyphens, underscores and dots.
-*   Documents are stored in a **document/** subfolder.
-*   Images are stored in an **image/** subfolder.
-*   Videos are stored in a **video/** subfolder.
+*   Assets are organized and named with the same care as code variables, using clear, unambiguous file and folder names in **snake_case**.
+*   File names are normalized to include only the following characters: letters, numbers, hyphens, underscores, and dots.
+*   Documents are stored in a **document/** subfolder, images in an **image/** subfolder, and videos in a **video/** subfolder, ideally named after the page to which they belong.
 *   User-specific files are stored in a **user/{profile_id}/** subfolder.
-*   Uploaded images are saved with a timestamp suffix at the end of their file label, and kept in their original form or in lossless AVIF file format.
-*   Local and uploaded original raster images are converted to the AVIF file format at high compression ratios in the following resolutions :
-    *   image_name.360.avif (placeholder at 30% quality)
-    *   image_name.480.avif (4 columns at 55% quality)
-    *   image_name.640.avif (3 columns at 55% quality)
-    *   image_name.960.avif (2 columns at 55% quality)
-    *   image_name.1280.avif (2/3 width at 55% quality)
-    *   image_name.1920.avif (full width at 55% quality)
-    *   image_name.3840.avif (double width at 55% quality)
-*   The image is resized to match the target width while preserving the original aspect ratio, but with the target height limited to twice the original width.
-*   Database paths do not specify resolutions :
+*   Uploaded images are saved with a millisecond timestamp suffix added to the end of their file name and kept in their original format or converted to a lossless AVIF file format.
+*   Local and uploaded original raster images are converted to the AVIF file format with high compression ratios in the following resolutions:
+    *   image_name.360.avif (nano placeholder at 30% quality)
+    *   image_name.480.avif (tiny 1/4 width at 55% quality)
+    *   image_name.640.avif (small 1/3 width at 55% quality)
+    *   image_name.960.avif (medium 1/2 width at 55% quality)
+    *   image_name.1280.avif (wide 2/3 width at 55% quality)
+    *   image_name.1920.avif (large 1x width at 55% quality)
+    *   image_name.2560.avif (big 4/3 width at 55% quality)
+    *   image_name.3840.avif (huge 2x width at 55% quality)
+*   Images are resized to match the target width while preserving the original aspect ratio, with the target height limited to twice the original width.
+*   Database paths do not specify resolutions:
     *   /local/path/to/image_name.avif
     *   /global/path/to/image_name.avif
-*   Both the original and reencoded images share the same relative path and file label.
-*   The website must only use the images stored on the CDN and at the smallest appropriate resolution.
-*   A preloaded low-resolution placeholder image should be displayed while the high-resolution image is loading.
+*   Both the original and re-encoded images share the same relative path and file label.
+*   The website must use only the images stored on the CDN, at the smallest appropriate resolution.
+*   A preloaded low-resolution placeholder image should be displayed while the high-resolution image loads.
 
 ## Version
 
