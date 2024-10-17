@@ -1926,7 +1926,7 @@ class ViewPropertiesPage
 *   Documents are stored in a **document/** subfolder, images in an **image/** subfolder, and videos in a **video/** subfolder, ideally named after the page to which they belong.
 *   User-specific files are stored in a **user/{profile_id}/** subfolder.
 *   Uploaded images are saved with a millisecond timestamp suffix added to the end of their file name and kept in their original format or converted to a lossless AVIF file format.
-*   Local and uploaded original raster images are converted to the AVIF file format with high compression ratios in the following resolutions:
+*   Local and uploaded original raster images are automatically converted to highly optimized AVIF files at all the resolutions in which they are actually used :
     *   image_name.360.avif (nano placeholder at 30% quality)
     *   image_name.480.avif (tiny 1/4 width at 55% quality)
     *   image_name.640.avif (small 1/3 width at 55% quality)
@@ -1936,12 +1936,12 @@ class ViewPropertiesPage
     *   image_name.2560.avif (big 4/3 width at 55% quality)
     *   image_name.3840.avif (huge 2x width at 55% quality)
 *   Images are resized to match the target width while preserving the original aspect ratio, with the target height limited to twice the original width.
-*   Database paths do not specify resolutions:
+*   Both the original and re-encoded images share the same relative path and file label.
+*   The website must use only the optimized images stored on the CDN, at the smallest appropriate resolution.
+*   A preloaded low-resolution placeholder image should be displayed while the high-resolution image loads.
+*   Database paths do not specify resolutions :
     *   /local/path/to/image_name.avif
     *   /global/path/to/image_name.avif
-*   Both the original and re-encoded images share the same relative path and file label.
-*   The website must use only the images stored on the CDN, at the smallest appropriate resolution.
-*   A preloaded low-resolution placeholder image should be displayed while the high-resolution image loads.
 
 ## Version
 
