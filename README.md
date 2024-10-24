@@ -32,6 +32,7 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
 *   Always leave the code in a **better state than you found it**, so even if you're in a hurry :
     *   Immediately fix any **design or implementation flaws** you encounter, because if you do not, no one else will, and technical debt will accumulate, eventually crippling the entire project.
     *   Continue writing **clean, maintainable code** to limit software entropy, which will help you **ship faster** by sustaining high productivity as the project grows in size and complexity.
+    *   Resist the temptation to write quick-and-dirty code, or you'll **lose more time** debugging and fixing it later.
 
 *   **Never waste performance**, or poor performance will eventually come back to haunt you :
     *   Avoid repeating expensive operations like database queries at close intervals.
@@ -161,7 +162,6 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
     export onChange = () => {};
 
     let valueCount = valueArray.length;
-    let
 
     // -- TYPES
 
@@ -431,22 +431,22 @@ This coding standard emphasizes self-documenting code and prioritizes readabilit
     <p class="book-text">
         {@html bookText }
     </p>
-    { #each numberArray as number }
+    {#each numberArray as number }
         <p class="number" in:fade>
             Number : { number }
         </p>
-    { /each }
+    {/each}
     <p>
         Doubled numbers: { doubledNumberArray.join( ', ' ) }
     </p>
     <p id="fruit-list" class="fruit-list">
         Fruits: { fruitText }
     </p>
-    { #each personArray as person }
+    {#each personArray as person }
         <p class="person">
             { person.getHelloMessage() }
         </p>
-    { /each }
+    {/each}
     <p>
         { ageInterval.firstAge } - { ageInterval.lastAge }
     </p>
