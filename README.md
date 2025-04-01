@@ -1656,6 +1656,9 @@ class ViewPropertiesPage
     *   Inheritance
         *   @extend
     *   Position
+        *   grid-area
+        *   grid-row
+        *   grid-column
         *   z-index
         *   position
         *   top
@@ -1734,9 +1737,6 @@ class ViewPropertiesPage
         *   gap
         *   row-gap
         *   column-gap
-        *   grid-area
-        *   grid-row
-        *   grid-column
         *   justify-content
         *   justify-items
         *   justify-self
@@ -1756,6 +1756,7 @@ class ViewPropertiesPage
         *   column-rule-width
         *   column-rule-style
         *   column-rule-color
+        *   break-inside
         *   shape-outside
         *   clip-path
         *   object-fit
